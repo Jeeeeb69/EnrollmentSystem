@@ -4,7 +4,6 @@ import {
   View,
   Text,
   TextInput,
-  Button,
   ScrollView,
   Alert,
   StyleSheet,
@@ -73,6 +72,7 @@ export default function Register() {
   const [semester, setSemester] = useState("");
 
   const [loading, setLoading] = useState(false);
+  const [formMessage, setFormMessage] = useState("");
 
   const onChangeBirthday = (event: any, selectedDate?: Date) => {
     setShowDatePicker(false);
@@ -84,6 +84,8 @@ export default function Register() {
   };
 
   const handleRegister = async () => {
+    setFormMessage("");
+
     const validationMessage = firstValidationError([
       validateName(firstName, "First name"),
       validateName(middleName, "Middle name", false),
@@ -101,12 +103,15 @@ export default function Register() {
     ]);
 
     if (validationMessage) {
+      setFormMessage(validationMessage);
       Alert.alert("Error", validationMessage);
       return;
     }
 
     if (password !== rePassword) {
-      Alert.alert("Error", "Passwords do not match");
+      const message = "Passwords do not match";
+      setFormMessage(message);
+      Alert.alert("Error", message);
       return;
     }
 
@@ -153,11 +158,19 @@ export default function Register() {
         error.response?.data || error
       );
 
-      const msg = getApiErrorMessage(
-        error.response?.data,
-        "Registration failed"
-      );
+      const msg =
+        (error?.code === "ECONNABORTED"
+          ? "Connection timed out. Make sure Django is running and the app is using the correct API address."
+          : "") ||
+        (error?.message === "Network Error"
+          ? "Cannot connect to the server. Make sure Django is running on 0.0.0.0:8000 and your phone/computer can reach the API address."
+          : "") ||
+        getApiErrorMessage(
+          error.response?.data,
+          "Registration failed"
+        );
 
+      setFormMessage(msg);
       Alert.alert("Error", msg);
     } finally {
       setLoading(false);
@@ -299,11 +312,24 @@ export default function Register() {
         </TouchableOpacity>
       </View>
 
-      {loading ? (
-        <ActivityIndicator size="large" color="#1E90FF" />
-      ) : (
-        <Button title="Register" onPress={handleRegister} />
-      )}
+      {formMessage ? (
+        <Text style={styles.formMessage}>{formMessage}</Text>
+      ) : null}
+
+      <TouchableOpacity
+        accessibilityRole="button"
+        accessibilityLabel="Register"
+        activeOpacity={0.85}
+        disabled={loading}
+        onPress={handleRegister}
+        style={[styles.registerButton, loading && styles.disabledButton]}
+      >
+        {loading ? (
+          <ActivityIndicator color="#fff" />
+        ) : (
+          <Text style={styles.registerButtonText}>Register</Text>
+        )}
+      </TouchableOpacity>
     </ScrollView>
   );
 }
@@ -344,4 +370,25 @@ const styles = StyleSheet.create({
   },
   pickerContainer: { borderWidth: 1, borderColor: "#ccc", borderRadius: 8, marginBottom: 12, overflow: "hidden" },
   dateInput: { borderWidth: 1, borderColor: "#ccc", borderRadius: 8, padding: 14, marginBottom: 12 },
+  formMessage: {
+    color: "#B91C1C",
+    fontSize: 14,
+    lineHeight: 20,
+    marginBottom: 12,
+  },
+  registerButton: {
+    minHeight: 48,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#1D4ED8",
+    borderRadius: 8,
+  },
+  disabledButton: {
+    opacity: 0.7,
+  },
+  registerButtonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "700",
+  },
 });

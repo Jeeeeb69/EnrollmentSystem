@@ -7,6 +7,17 @@ import dj_database_url
 # BASE DIRECTORY
 # =====================================================
 BASE_DIR = Path(__file__).resolve().parent.parent
+ENV_FILE = BASE_DIR / '.env'
+
+if ENV_FILE.exists():
+    for line in ENV_FILE.read_text().splitlines():
+        line = line.strip()
+
+        if not line or line.startswith('#') or '=' not in line:
+            continue
+
+        key, value = line.split('=', 1)
+        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
 # =====================================================
 # SECURITY
@@ -36,9 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'daphne',
     'django.contrib.staticfiles',
 
     # THIRD PARTY
+    'channels',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
@@ -55,10 +68,9 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
 
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-
     'corsheaders.middleware.CorsMiddleware',
 
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -94,6 +106,7 @@ TEMPLATES = [
 # WSGI
 # =====================================================
 WSGI_APPLICATION = 'enrollment_system.wsgi.application'
+ASGI_APPLICATION = 'enrollment_system.asgi.application'
 
 # =====================================================
 # DATABASE
@@ -214,6 +227,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # =====================================================
 # CORS
 # =====================================================
+DEFAULT_CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8081',
+    'http://127.0.0.1:8081',
+    'http://localhost:19006',
+    'http://127.0.0.1:19006',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
+
 CORS_ALLOW_ALL_ORIGINS = os.environ.get(
     'CORS_ALLOW_ALL_ORIGINS',
     str(DEBUG)
@@ -223,12 +245,21 @@ CORS_ALLOWED_ORIGINS = [
     origin.strip()
     for origin in os.environ.get(
         'CORS_ALLOWED_ORIGINS',
-        ''
+        ','.join(DEFAULT_CORS_ALLOWED_ORIGINS)
     ).split(',')
     if origin.strip()
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    origin.strip()
+    for origin in os.environ.get(
+        'CSRF_TRUSTED_ORIGINS',
+        ','.join(DEFAULT_CORS_ALLOWED_ORIGINS)
+    ).split(',')
+    if origin.strip()
+]
 
 # =====================================================
 # REST FRAMEWORK
@@ -273,20 +304,38 @@ DJOSER = {
 # =====================================================
 # EMAIL
 # =====================================================
+EMAIL_HOST_USER = (
+    os.environ.get('EMAIL_HOST_USER')
+    or os.environ.get('GMAIL_EMAIL')
+    or ''
+)
+EMAIL_HOST_PASSWORD = (
+    os.environ.get('EMAIL_HOST_PASSWORD')
+    or os.environ.get('GMAIL_APP_PASSWORD')
+    or ''
+).replace(' ', '')
+EMAIL_HAS_SMTP_CREDENTIALS = bool(EMAIL_HOST_USER and EMAIL_HOST_PASSWORD)
 EMAIL_BACKEND = os.environ.get(
     'EMAIL_BACKEND',
-    'django.core.mail.backends.console.EmailBackend'
+    'django.core.mail.backends.smtp.EmailBackend'
+    if EMAIL_HAS_SMTP_CREDENTIALS
+    else 'django.core.mail.backends.console.EmailBackend'
 )
 
-EMAIL_HOST = os.environ.get('EMAIL_HOST', '')
+EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_PORT = int(os.environ.get('EMAIL_PORT', '587'))
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'true').lower() == 'true'
+EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', 'false').lower() == 'true'
+EMAIL_TIMEOUT = int(os.environ.get('EMAIL_TIMEOUT', '20'))
+
+if EMAIL_USE_TLS and EMAIL_USE_SSL:
+    raise RuntimeError('EMAIL_USE_TLS and EMAIL_USE_SSL cannot both be true.')
 
 DEFAULT_FROM_EMAIL = os.environ.get(
     'DEFAULT_FROM_EMAIL',
-    EMAIL_HOST_USER or 'noreply@student-enrollment.local'
+    f'Enrollment <{EMAIL_HOST_USER}>'
+    if EMAIL_HOST_USER
+    else 'Enrollment <noreply@student-enrollment.local>'
 )
 
 # =====================================================
@@ -295,3 +344,16 @@ DEFAULT_FROM_EMAIL = os.environ.get(
 DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760
 FILE_UPLOAD_MAX_MEMORY_SIZE = 10485760
 FILE_UPLOAD_PERMISSIONS = 0o644
+
+# =====================================================
+# OLLAMA CHATBOT
+# =====================================================
+OLLAMA_BASE_URL = os.environ.get(
+    'OLLAMA_BASE_URL',
+    'http://localhost:11434'
+).rstrip('/')
+OLLAMA_CHAT_MODEL = os.environ.get(
+    'OLLAMA_CHAT_MODEL',
+    'qwen2.5:0.5b'
+)
+OLLAMA_TIMEOUT = int(os.environ.get('OLLAMA_TIMEOUT', '30'))

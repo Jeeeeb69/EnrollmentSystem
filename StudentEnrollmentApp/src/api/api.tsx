@@ -11,11 +11,16 @@ import { tokenStorage } from './storage';
 // Base URL
 // -------------------
 const LAN_API_URL = 'http://192.168.254.100:8000/api/';
+const WEB_API_URL = 'http://localhost:8000/api/';
 const ANDROID_EMULATOR_API_URL = 'http://10.0.2.2:8000/api/';
 
 const getApiBaseUrl = () => {
   if (process.env.EXPO_PUBLIC_API_URL) {
     return process.env.EXPO_PUBLIC_API_URL;
+  }
+
+  if (Platform.OS === 'web') {
+    return WEB_API_URL;
   }
 
   if (
@@ -28,7 +33,22 @@ const getApiBaseUrl = () => {
   return LAN_API_URL;
 };
 
-const API_BASE_URL = getApiBaseUrl();
+export const API_BASE_URL = getApiBaseUrl();
+
+export const getChatbotWebSocketUrl = (token: string) => {
+  const websocketUrl = new URL(
+    process.env.EXPO_PUBLIC_CHATBOT_WS_URL || API_BASE_URL
+  );
+
+  websocketUrl.protocol = websocketUrl.protocol === 'https:' ? 'wss:' : 'ws:';
+  websocketUrl.pathname = websocketUrl.pathname
+    .replace(/\/api\/?$/, '')
+    .replace(/\/$/, '');
+  websocketUrl.pathname = `${websocketUrl.pathname}/ws/chatbot/`;
+  websocketUrl.searchParams.set('token', token);
+
+  return websocketUrl.toString();
+};
 
 export const api = create({
   baseURL: API_BASE_URL,

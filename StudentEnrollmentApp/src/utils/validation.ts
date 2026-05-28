@@ -55,6 +55,25 @@ export function validatePassword(password: string) {
     return "Password must include letters and numbers.";
   }
 
+  const lowerPassword = password.toLowerCase();
+  const commonPasswords = [
+    "password",
+    "password123",
+    "password1234",
+    "qwerty123",
+    "admin123",
+    "welcome123",
+    "letmein123",
+    "rhean123",
+  ];
+
+  if (
+    commonPasswords.includes(lowerPassword) ||
+    lowerPassword.includes("password")
+  ) {
+    return "Password is too common. Use a more unique password.";
+  }
+
   return "";
 }
 

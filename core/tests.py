@@ -1,4 +1,5 @@
 from datetime import date
+from unittest.mock import Mock, patch
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import identify_hasher
@@ -319,7 +320,16 @@ class ChatbotTests(TestCase):
         self.assertEqual(response.status_code, 400)
         self.assertIn("message", response.data)
 
-    def test_chatbot_answers_subject_questions(self):
+    @patch("core.views.requests.post")
+    def test_chatbot_uses_ollama_for_subject_questions(self, mock_post):
+        mock_response = Mock()
+        mock_response.json.return_value = {
+            "message": {
+                "content": "IT102 - Web Development is available."
+            }
+        }
+        mock_response.raise_for_status.return_value = None
+        mock_post.return_value = mock_response
         self.client.force_authenticate(user=self.user)
 
         response = self.client.post(
@@ -330,6 +340,10 @@ class ChatbotTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertIn("IT102", response.data["reply"])
+        mock_post.assert_called_once()
+        payload = mock_post.call_args.kwargs["json"]
+        self.assertEqual(payload["model"], "qwen2.5:0.5b")
+        self.assertIn("IT102", payload["messages"][1]["content"])
 
 
 class SecurityTests(TestCase):

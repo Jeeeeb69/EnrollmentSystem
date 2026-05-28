@@ -1,10 +1,14 @@
 # views.py
 
+import logging
+import smtplib
+
 from django.db import IntegrityError, transaction
 from django.db.models import Q
-from django.core.exceptions import ValidationError
+from django.core.exceptions import ImproperlyConfigured, ValidationError
 from django.conf import settings
 from django.core.mail import send_mail
+import requests
 
 from django.contrib.auth import get_user_model
 
@@ -12,7 +16,8 @@ from rest_framework import (
     viewsets,
     status,
     filters,
-    generics
+    generics,
+    serializers
 )
 
 from rest_framework.response import Response
@@ -60,9 +65,22 @@ from .serializers import (
 from .permissions import IsAdminOrReadOnly
 
 User = get_user_model()
+logger = logging.getLogger(__name__)
 
 
 def send_activation_email(user):
+    using_console_email = (
+        settings.EMAIL_BACKEND == 'django.core.mail.backends.console.EmailBackend'
+    )
+
+    if (
+        not using_console_email
+        and (not settings.EMAIL_HOST_USER or not settings.EMAIL_HOST_PASSWORD)
+    ):
+        raise ImproperlyConfigured(
+            "Gmail SMTP is not configured. Set GMAIL_EMAIL and GMAIL_APP_PASSWORD."
+        )
+
     if not user.activation_code:
         user.generate_activation_code()
         user.save(update_fields=[
@@ -78,132 +96,163 @@ def send_activation_email(user):
         f'please ignore this email.\n'
     )
 
-    send_mail(
-        subject,
-        message,
-        settings.DEFAULT_FROM_EMAIL,
-        [user.email],
-        fail_silently=False,
-    )
+    try:
+        send_mail(
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL,
+            [user.email],
+            fail_silently=False,
+        )
+    except smtplib.SMTPAuthenticationError as exc:
+        raise ImproperlyConfigured(
+            "Gmail rejected the sender login. Generate a new Google App Password "
+            "for the same Gmail account in GMAIL_EMAIL, then update GMAIL_APP_PASSWORD."
+        ) from exc
 
 
-def build_chatbot_response(user, message):
-    text = " ".join(str(message or "").strip().lower().split())
+def first_serializer_error(errors):
+    if isinstance(errors, dict):
+        for field, messages in errors.items():
+            message = first_serializer_error(messages)
+            return f"{field}: {message}" if field != "non_field_errors" else message
 
-    if not text:
-        return "Please type a question so I can help."
+    if isinstance(errors, list) and errors:
+        return first_serializer_error(errors[0])
 
+    return str(errors)
+
+
+def build_chatbot_context(user):
     try:
         student = Student.objects.get(user=user)
     except Student.DoesNotExist:
         student = None
 
-    if any(word in text for word in ["hello", "hi", "hey"]):
-        name = student.first_name if student else "there"
-        return f"Hi {name}. I can help with enrollment, subjects, sections, profile, and account questions."
-
-    if any(word in text for word in ["subject", "subjects", "course list", "available"]):
-        if student and not user.is_staff:
-            subjects = Subject.objects.filter(
-                Q(course=student.course) | Q(course='GENERAL'),
-                year_level=student.year_level,
-                semester=student.semester
-            ).order_by('subject_code')[:8]
-        else:
-            subjects = Subject.objects.order_by('subject_code')[:8]
-
-        if not subjects:
-            return "No available subjects were found for your current curriculum."
-
-        subject_list = ", ".join(
-            f"{subject.subject_code} - {subject.subject_name}"
-            for subject in subjects
+    if student:
+        profile = (
+            f"Student: {student.full_name}; student number: "
+            f"{student.student_number or 'N/A'}; course: {student.course or 'N/A'}; "
+            f"year level: {student.year_level or 'N/A'}; semester: {student.semester or 'N/A'}."
         )
+    elif user.is_staff:
+        profile = f"User is an admin/staff account: {user.email}."
+    else:
+        profile = "No student profile is linked to this user."
 
-        return f"Available subjects include: {subject_list}."
-
-    if any(word in text for word in ["enrollment", "enrolled", "status", "waitlist", "waitlisted"]):
-        if not student and not user.is_staff:
-            return "I could not find your student profile, so I cannot check enrollment records yet."
-
-        enrollments = Enrollment.objects.select_related(
-            'subject',
-            'section',
-            'student'
+    subjects = Subject.objects.order_by('subject_code')
+    if student and not user.is_staff:
+        subjects = subjects.filter(
+            Q(course=student.course) | Q(course='GENERAL'),
+            year_level=student.year_level,
+            semester=student.semester
         )
-
-        if not user.is_staff:
-            enrollments = enrollments.filter(student=student)
-
-        enrollments = enrollments.order_by('-created_at')[:8]
-
-        if not enrollments:
-            return "You do not have enrollment records yet. Go to Enrollments and choose a subject to enroll."
-
-        enrollment_list = "; ".join(
-            f"{enrollment.subject.subject_code} ({enrollment.status})"
-            for enrollment in enrollments
+    subject_lines = [
+        (
+            f"- {subject.subject_code}: {subject.subject_name}, {subject.units} unit(s), "
+            f"{subject.course}, {subject.year_level}, {subject.semester}"
         )
+        for subject in subjects[:12]
+    ]
 
-        return f"Here are the latest enrollment records: {enrollment_list}."
-
-    if any(word in text for word in ["section", "slot", "capacity", "room", "schedule"]):
-        sections = Section.objects.select_related('subject').order_by(
-            'subject__subject_code',
-            'section_name'
-        )
-
-        if student and not user.is_staff:
-            sections = sections.filter(
-                Q(subject__course=student.course) | Q(subject__course='GENERAL'),
-                subject__year_level=student.year_level,
-                subject__semester=student.semester
-            )
-
-        sections = sections[:8]
-
-        if not sections:
-            return "No sections are currently available for your curriculum."
-
-        section_list = "; ".join(
-            f"{section.subject.subject_code} section {section.section_name}: {section.available_slots} slot(s)"
-            for section in sections
-        )
-
-        return f"Section availability: {section_list}."
-
-    if any(word in text for word in ["profile", "student number", "student no", "my info"]):
-        if not student:
-            return "I could not find your student profile."
-
-        return (
-            f"Your profile is {student.full_name}, student number "
-            f"{student.student_number or 'N/A'}, {student.course or 'No course'}, "
-            f"{student.year_level or 'No year level'}, {student.semester or 'No semester'}."
-        )
-
-    if any(word in text for word in ["register", "sign up", "account"]):
-        return (
-            "To create an account, open Register, complete the required student details, "
-            "choose course, year level, and semester, then submit with a strong password."
-        )
-
-    if any(word in text for word in ["help", "what can you do", "commands"]):
-        return (
-            "You can ask me about available subjects, enrollment status, sections and slots, "
-            "your profile, registration, or how to enroll."
-        )
-
-    if any(word in text for word in ["how to enroll", "enroll", "add subject"]):
-        return (
-            "To enroll, open the Enrollments tab, select a subject, optionally select a section, "
-            "then tap Add Enrollment. The system checks course, year, semester, units, and slots."
-        )
-
-    return (
-        "I can help with enrollment questions. Try asking: available subjects, my enrollment status, "
-        "section slots, my profile, or how to enroll."
+    sections = Section.objects.select_related('subject').order_by(
+        'subject__subject_code',
+        'section_name'
     )
+    if student and not user.is_staff:
+        sections = sections.filter(
+            Q(subject__course=student.course) | Q(subject__course='GENERAL'),
+            subject__year_level=student.year_level,
+            subject__semester=student.semester
+        )
+    section_lines = [
+        (
+            f"- {section.subject.subject_code} section {section.section_name}: "
+            f"{section.available_slots} available slot(s), room {section.room or 'N/A'}, "
+            f"schedule {section.schedule or 'N/A'}"
+        )
+        for section in sections[:12]
+    ]
+
+    enrollments = Enrollment.objects.select_related(
+        'student',
+        'subject',
+        'section'
+    ).order_by('-created_at')
+    if not user.is_staff:
+        enrollments = enrollments.filter(student=student)
+    enrollment_lines = [
+        (
+            f"- {enrollment.subject.subject_code}: {enrollment.status}, "
+            f"semester {enrollment.semester}, section "
+            f"{enrollment.section.section_name if enrollment.section else 'not assigned'}"
+        )
+        for enrollment in enrollments[:12]
+    ]
+
+    return "\n".join([
+        profile,
+        "Relevant subjects:",
+        "\n".join(subject_lines) or "- None found.",
+        "Relevant sections:",
+        "\n".join(section_lines) or "- None found.",
+        "Recent enrollments:",
+        "\n".join(enrollment_lines) or "- None found.",
+    ])
+
+
+def build_chatbot_response(user, message):
+    payload = {
+        "model": settings.OLLAMA_CHAT_MODEL,
+        "stream": False,
+        "messages": [
+            {
+                "role": "system",
+                "content": (
+                    "You are the Student Enrollment System assistant. Answer in a helpful, "
+                    "concise way using the provided school data. If the data does not answer "
+                    "the question, say so and suggest what the student can check in the app. "
+                    "Do not invent subjects, enrollment statuses, rooms, schedules, or student details."
+                ),
+            },
+            {
+                "role": "system",
+                "content": f"Current app data:\n{build_chatbot_context(user)}",
+            },
+            {
+                "role": "user",
+                "content": message,
+            },
+        ],
+        "options": {
+            "temperature": 0.2,
+            "num_predict": 180,
+        },
+    }
+
+    try:
+        response = requests.post(
+            f"{settings.OLLAMA_BASE_URL}/api/chat",
+            json=payload,
+            timeout=settings.OLLAMA_TIMEOUT,
+        )
+        response.raise_for_status()
+        data = response.json()
+    except requests.RequestException:
+        logger.exception("Ollama chatbot request failed")
+        return (
+            "Ollama chatbot is unavailable right now. Make sure Ollama is running "
+            "and the qwen2.5:0.5b model is installed."
+        )
+    except ValueError:
+        logger.exception("Ollama chatbot returned invalid JSON")
+        return "Ollama chatbot returned an invalid response."
+
+    reply = data.get('message', {}).get('content', '').strip()
+    if not reply:
+        return "Ollama chatbot did not return a reply."
+
+    return reply
 
 
 def auto_enroll_student(student):
@@ -278,11 +327,10 @@ def auto_enroll_subject(subject):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def register_user(request):
-
-    serializer = StudentRegistrationSerializer(data=request.data)
-    serializer.is_valid(raise_exception=True)
-
     try:
+        serializer = StudentRegistrationSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
         with transaction.atomic():
 
             student = serializer.save()
@@ -306,6 +354,8 @@ def register_user(request):
         return Response({
             "error": first_model_error(e)
         }, status=status.HTTP_400_BAD_REQUEST)
+    except serializers.ValidationError as e:
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
     except IntegrityError:
         return Response({
             "error": "Duplicate student name, student number, or email address is not allowed."
@@ -370,7 +420,13 @@ def verify_activation_code(request):
 @permission_classes([AllowAny])
 def resend_activation_code(request):
     serializer = ActivationResendSerializer(data=request.data)
-    serializer.is_valid(raise_exception=True)
+
+    try:
+        serializer.is_valid(raise_exception=True)
+    except serializers.ValidationError as e:
+        return Response({
+            "error": first_serializer_error(e.detail)
+        }, status=status.HTTP_400_BAD_REQUEST)
 
     email = serializer.validated_data['email']
 

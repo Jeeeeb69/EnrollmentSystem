@@ -15,7 +15,8 @@ import {
 
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-import { api } from "../../src/api/api";
+import { api, getChatbotWebSocketUrl } from "../../src/api/api";
+import { tokenStorage } from "../../src/api/storage";
 import {
   cleanText,
   getApiErrorMessage,
@@ -34,6 +35,69 @@ const starterPrompts = [
   "How do I enroll?",
 ];
 
+const requestChatbotReplyOverWebSocket = async (message: string) => {
+  const token = await tokenStorage.getItem("accessToken");
+
+  if (!token) {
+    throw new Error("Missing access token.");
+  }
+
+  return new Promise<string>((resolve, reject) => {
+    const socket = new WebSocket(getChatbotWebSocketUrl(token));
+    let settled = false;
+
+    const cleanup = () => {
+      settled = true;
+      clearTimeout(timeoutId);
+      socket.close();
+    };
+
+    const timeoutId = setTimeout(() => {
+      if (!settled) {
+        cleanup();
+        reject(new Error("Chatbot WebSocket timed out."));
+      }
+    }, 35000);
+
+    socket.onopen = () => {
+      socket.send(JSON.stringify({ message }));
+    };
+
+    socket.onmessage = (event) => {
+      try {
+        const payload = JSON.parse(String(event.data));
+
+        if (payload.type === "reply") {
+          cleanup();
+          resolve(payload.reply || "I could not prepare a reply.");
+        }
+
+        if (payload.type === "error") {
+          cleanup();
+          reject(new Error(payload.error || "Chatbot WebSocket error."));
+        }
+      } catch {
+        cleanup();
+        reject(new Error("Invalid chatbot WebSocket response."));
+      }
+    };
+
+    socket.onerror = () => {
+      if (!settled) {
+        cleanup();
+        reject(new Error("Chatbot WebSocket unavailable."));
+      }
+    };
+
+    socket.onclose = () => {
+      if (!settled) {
+        cleanup();
+        reject(new Error("Chatbot WebSocket closed."));
+      }
+    };
+  });
+};
+
 export default function Chatbot() {
   const scrollRef = useRef<ScrollView | null>(null);
   const [message, setMessage] = useState("");
@@ -42,7 +106,7 @@ export default function Chatbot() {
     {
       id: Date.now(),
       role: "bot",
-      text: "Hi. I can help with enrollment, subjects, sections, profile, and account questions.",
+      text: "Hi. I am the Ollama Qwen enrollment assistant. Ask me about subjects, sections, profile, account, or enrollment questions.",
     },
   ]);
 
@@ -77,14 +141,21 @@ export default function Chatbot() {
     scrollToEnd();
 
     try {
-      const response = await api.post("chatbot/", {
-        message: cleanMessage,
-      });
+      let reply = "";
+
+      try {
+        reply = await requestChatbotReplyOverWebSocket(cleanMessage);
+      } catch {
+        const response = await api.post("chatbot/", {
+          message: cleanMessage,
+        });
+        reply = response.data.reply || "I could not prepare a reply.";
+      }
 
       const botMessage: ChatMessage = {
         id: Date.now() + 1,
         role: "bot",
-        text: response.data.reply || "I could not prepare a reply.",
+        text: reply,
       };
 
       setMessages((current) => [...current, botMessage]);
@@ -115,8 +186,8 @@ export default function Chatbot() {
     >
       <View style={styles.header}>
         <View>
-          <Text style={styles.title}>Chatbot</Text>
-          <Text style={styles.subtitle}>Enrollment assistant</Text>
+          <Text style={styles.title}>WebSocket Chat</Text>
+          <Text style={styles.subtitle}>Live Ollama Qwen enrollment assistant</Text>
         </View>
 
         <View style={styles.headerIcon}>

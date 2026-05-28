@@ -91,7 +91,7 @@ export default function TabLayout() {
       <Tabs.Screen name="subjects" options={{ title: 'Subjects', tabBarIcon: ({ color, size }) => <Ionicons name="book-outline" size={size} color={color} /> }} />
       <Tabs.Screen name="sections" options={{ title: 'Sections', tabBarIcon: ({ color, size }) => <Ionicons name="briefcase-outline" size={size} color={color} /> }} />
       <Tabs.Screen name="enrollments" options={{ title: 'Enrollments', tabBarIcon: ({ color, size }) => <Ionicons name="clipboard-outline" size={size} color={color} /> }} />
-      <Tabs.Screen name="chatbot" options={{ title: 'Chatbot', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubble-ellipses-outline" size={size} color={color} /> }} />
+      <Tabs.Screen name="chatbot" options={{ title: 'WebSocket Chat', tabBarIcon: ({ color, size }) => <Ionicons name="chatbubble-ellipses-outline" size={size} color={color} /> }} />
       <Tabs.Screen name="profile" options={{ title: 'Profile', tabBarIcon: ({ color, size }) => <Ionicons name="person-outline" size={size} color={color} /> }} />
       <Tabs.Screen
         name="logout"

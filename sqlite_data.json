@@ -1,16 +1,18 @@
 [
 {
   "model": "core.user",
+  "pk": 3,
   "fields": {
-    "password": "pbkdf2_sha256$1200000$26LgrtSpRLBrAyLNO5FiDY$qkYfsQiVugKkYPMF7GQA1AKvhxPizZS2bYD0qNi8vgI=",
-    "last_login": "2026-05-25T15:09:21.561Z",
+    "password": "pbkdf2_sha256$1200000$qv4penNOv55RAoVo6RLjq3$1Q2R1hogB+62fr9GS9gNsrPtqmgWwsg2zJCkRIFdqOU=",
+    "last_login": "2026-05-25T16:17:54.220Z",
     "is_superuser": true,
     "first_name": "",
     "last_name": "",
     "is_staff": true,
     "is_active": true,
-    "date_joined": "2026-05-19T17:40:07.652Z",
+    "date_joined": "2026-05-19T09:40:07.652Z",
     "email": "admin@gmail.com",
+    "email_verified": true,
     "activation_code": "",
     "activation_code_expires_at": null,
     "groups": [],
@@ -19,6 +21,7 @@
 },
 {
   "model": "core.user",
+  "pk": 20,
   "fields": {
     "password": "pbkdf2_sha256$1200000$o9TRm6Yn5dKcmo8dfHcSJT$uzzXZFL3k5txkSjj/ieQGostvLbC8UmtCYx9B2CnuzY=",
     "last_login": null,
@@ -27,8 +30,9 @@
     "last_name": "",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2026-05-20T15:26:06.952Z",
+    "date_joined": "2026-05-20T07:26:06.952Z",
     "email": "katsubalabat@gmail.com",
+    "email_verified": true,
     "activation_code": "",
     "activation_code_expires_at": null,
     "groups": [],
@@ -37,6 +41,7 @@
 },
 {
   "model": "core.user",
+  "pk": 21,
   "fields": {
     "password": "pbkdf2_sha256$1200000$PzmftDmLttY0QvrgjGKSRW$JU9A49x93o17jyv8d8TwuOI1zwCJM8aUiWQcWHKOGIo=",
     "last_login": null,
@@ -45,8 +50,9 @@
     "last_name": "",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2026-05-20T16:20:14.685Z",
+    "date_joined": "2026-05-20T08:20:14.685Z",
     "email": "jave@gmail.com",
+    "email_verified": true,
     "activation_code": "",
     "activation_code_expires_at": null,
     "groups": [],
@@ -55,6 +61,7 @@
 },
 {
   "model": "core.user",
+  "pk": 22,
   "fields": {
     "password": "pbkdf2_sha256$1200000$GHmpLLg6fMZKMYMwUqQkSX$ItYDfI2w4RI9BFcv0sL9TUhBpX25JA/HBTD5MaJpWeM=",
     "last_login": null,
@@ -63,8 +70,9 @@
     "last_name": "",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2026-05-20T16:42:01.785Z",
+    "date_joined": "2026-05-20T08:42:01.785Z",
     "email": "balabat@gmail.com",
+    "email_verified": true,
     "activation_code": "",
     "activation_code_expires_at": null,
     "groups": [],
@@ -73,6 +81,7 @@
 },
 {
   "model": "core.user",
+  "pk": 23,
   "fields": {
     "password": "pbkdf2_sha256$1200000$pr8rdgE5IoimtrzchBg2G2$2BflDORWJ1VCT+b3a8mAZ9Y8j1q/yMe2t4kyiF/cNPM=",
     "last_login": null,
@@ -81,8 +90,9 @@
     "last_name": "",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2026-05-20T16:46:13.223Z",
+    "date_joined": "2026-05-20T08:46:13.223Z",
     "email": "ambot@gmail.com",
+    "email_verified": true,
     "activation_code": "",
     "activation_code_expires_at": null,
     "groups": [],
@@ -91,6 +101,7 @@
 },
 {
   "model": "core.user",
+  "pk": 24,
   "fields": {
     "password": "pbkdf2_sha256$1200000$MpWWeMyUDJRmnvIt3OSfso$wPfdo1sf+QPm2N8Fj+JbCRTJ5WHoHMVRJnVoywqe/1s=",
     "last_login": null,
@@ -98,9 +109,10 @@
     "first_name": "",
     "last_name": "",
     "is_staff": false,
-    "is_active": true,
-    "date_joined": "2026-05-21T02:19:13.620Z",
+    "is_active": false,
+    "date_joined": "2026-05-20T18:19:13.620Z",
     "email": "brent@gmail.com",
+    "email_verified": false,
     "activation_code": "",
     "activation_code_expires_at": null,
     "groups": [],
@@ -109,6 +121,7 @@
 },
 {
   "model": "core.user",
+  "pk": 25,
   "fields": {
     "password": "pbkdf2_sha256$1200000$pUordhXK9JY273j24KaxYt$1zo/R15be5vuLF0BvEu8mJEmHno7kqThW69EhQ/tH88=",
     "last_login": null,
@@ -117,8 +130,9 @@
     "last_name": "",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2026-05-21T02:35:21.992Z",
+    "date_joined": "2026-05-20T18:35:21.992Z",
     "email": "christian@gmail.com",
+    "email_verified": true,
     "activation_code": "",
     "activation_code_expires_at": null,
     "groups": [],
@@ -127,6 +141,7 @@
 },
 {
   "model": "core.user",
+  "pk": 27,
   "fields": {
     "password": "pbkdf2_sha256$1200000$VoYmx8UEv9pxAsI19zf16q$I/A6NuU/i+zwlmS+uxbcUinMMsHxEmlOX+bbGePqwWM=",
     "last_login": null,
@@ -135,10 +150,51 @@
     "last_name": "",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2026-05-22T14:23:26.926Z",
+    "date_joined": "2026-05-22T06:23:26.926Z",
     "email": "rheanbalabat@gmail.com",
+    "email_verified": true,
     "activation_code": "",
     "activation_code_expires_at": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "core.user",
+  "pk": 30,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$dwGr4zvbj9Vpvi8qB6Jd3E$igYpw8aTLFBv0o8r5bRykmQ0FNNjuCo0cSnhpdEWAws=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-27T15:53:18.683Z",
+    "email": "bambiebangcal@gmail.com",
+    "email_verified": true,
+    "activation_code": "795170",
+    "activation_code_expires_at": "2026-05-27T16:10:13.354Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "core.user",
+  "pk": 31,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$ljU0C71S5uobKB8n7Z7RSb$Tf4ehagstfFJAkkPLbOuuhRZ+JUqNM0tsVAnOF3Ezkk=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-27T16:06:53.451Z",
+    "email": "kyllesumatra@gmail.com",
+    "email_verified": true,
+    "activation_code": "823323",
+    "activation_code_expires_at": "2026-05-27T16:21:54.342Z",
     "groups": [],
     "user_permissions": []
   }
@@ -154,8 +210,8 @@
     "course": "Information Technology",
     "year_level": "1st Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -169,8 +225,8 @@
     "course": "Information Technology",
     "year_level": "1st Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -184,8 +240,8 @@
     "course": "Information Technology",
     "year_level": "1st Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -199,8 +255,8 @@
     "course": "Information Technology",
     "year_level": "1st Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -214,8 +270,8 @@
     "course": "Information Technology",
     "year_level": "2nd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -229,8 +285,8 @@
     "course": "Information Technology",
     "year_level": "2nd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -244,8 +300,8 @@
     "course": "Information Technology",
     "year_level": "2nd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -259,8 +315,8 @@
     "course": "Information Technology",
     "year_level": "2nd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -274,8 +330,8 @@
     "course": "Information Technology",
     "year_level": "2nd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -289,8 +345,8 @@
     "course": "Information Technology",
     "year_level": "2nd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -304,8 +360,8 @@
     "course": "Information Technology",
     "year_level": "3rd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -319,8 +375,8 @@
     "course": "Information Technology",
     "year_level": "3rd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -334,8 +390,8 @@
     "course": "Information Technology",
     "year_level": "3rd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -349,8 +405,8 @@
     "course": "Information Technology",
     "year_level": "3rd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -364,8 +420,8 @@
     "course": "Information Technology",
     "year_level": "3rd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -379,8 +435,8 @@
     "course": "Information Technology",
     "year_level": "3rd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -394,8 +450,8 @@
     "course": "Information Technology",
     "year_level": "4th Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -409,8 +465,8 @@
     "course": "Information Technology",
     "year_level": "4th Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -424,8 +480,8 @@
     "course": "Information Technology",
     "year_level": "4th Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -439,8 +495,8 @@
     "course": "Information Technology",
     "year_level": "4th Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -454,8 +510,8 @@
     "course": "Information Technology",
     "year_level": "4th Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -469,8 +525,8 @@
     "course": "Information Technology",
     "year_level": "4th Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -484,8 +540,8 @@
     "course": "Computer Science",
     "year_level": "1st Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -499,8 +555,8 @@
     "course": "Computer Science",
     "year_level": "1st Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -514,8 +570,8 @@
     "course": "Computer Science",
     "year_level": "1st Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -529,8 +585,8 @@
     "course": "Computer Science",
     "year_level": "1st Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -540,12 +596,12 @@
     "subject_code": "CS201",
     "subject_name": "Data Structures and Algorithms",
     "description": "",
-    "units": 3,
+    "units": 4,
     "course": "Computer Science",
     "year_level": "2nd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-25T16:19:34.542Z"
   }
 },
 {
@@ -559,8 +615,8 @@
     "course": "Computer Science",
     "year_level": "2nd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -574,8 +630,8 @@
     "course": "Computer Science",
     "year_level": "2nd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -589,8 +645,8 @@
     "course": "Computer Science",
     "year_level": "2nd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -604,8 +660,8 @@
     "course": "Computer Science",
     "year_level": "2nd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -619,8 +675,8 @@
     "course": "Computer Science",
     "year_level": "2nd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -634,8 +690,8 @@
     "course": "Computer Science",
     "year_level": "3rd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -649,8 +705,8 @@
     "course": "Computer Science",
     "year_level": "3rd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -664,8 +720,8 @@
     "course": "Computer Science",
     "year_level": "3rd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -679,8 +735,8 @@
     "course": "Computer Science",
     "year_level": "3rd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -694,8 +750,8 @@
     "course": "Computer Science",
     "year_level": "3rd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -709,8 +765,8 @@
     "course": "Computer Science",
     "year_level": "3rd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -724,8 +780,8 @@
     "course": "Computer Science",
     "year_level": "4th Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -739,8 +795,8 @@
     "course": "Computer Science",
     "year_level": "4th Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -754,8 +810,8 @@
     "course": "Computer Science",
     "year_level": "4th Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -769,8 +825,8 @@
     "course": "Computer Science",
     "year_level": "4th Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -784,8 +840,8 @@
     "course": "Computer Science",
     "year_level": "4th Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -799,8 +855,8 @@
     "course": "Computer Science",
     "year_level": "4th Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -814,8 +870,8 @@
     "course": "Technology Communication Management",
     "year_level": "1st Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -829,8 +885,8 @@
     "course": "Technology Communication Management",
     "year_level": "1st Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -844,8 +900,8 @@
     "course": "Technology Communication Management",
     "year_level": "1st Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -859,8 +915,8 @@
     "course": "Technology Communication Management",
     "year_level": "1st Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -874,8 +930,8 @@
     "course": "Technology Communication Management",
     "year_level": "2nd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -889,8 +945,8 @@
     "course": "Technology Communication Management",
     "year_level": "2nd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -904,8 +960,8 @@
     "course": "Technology Communication Management",
     "year_level": "2nd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -919,8 +975,8 @@
     "course": "Technology Communication Management",
     "year_level": "2nd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -934,8 +990,8 @@
     "course": "Technology Communication Management",
     "year_level": "2nd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -949,8 +1005,8 @@
     "course": "Technology Communication Management",
     "year_level": "2nd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -964,8 +1020,8 @@
     "course": "Technology Communication Management",
     "year_level": "3rd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -979,8 +1035,8 @@
     "course": "Technology Communication Management",
     "year_level": "3rd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -994,8 +1050,8 @@
     "course": "Technology Communication Management",
     "year_level": "3rd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1009,8 +1065,8 @@
     "course": "Technology Communication Management",
     "year_level": "3rd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1024,8 +1080,8 @@
     "course": "Technology Communication Management",
     "year_level": "3rd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1039,8 +1095,8 @@
     "course": "Technology Communication Management",
     "year_level": "3rd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1054,8 +1110,8 @@
     "course": "Technology Communication Management",
     "year_level": "4th Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1069,8 +1125,8 @@
     "course": "Technology Communication Management",
     "year_level": "4th Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1084,8 +1140,8 @@
     "course": "Technology Communication Management",
     "year_level": "4th Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1099,8 +1155,8 @@
     "course": "Technology Communication Management",
     "year_level": "4th Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1114,8 +1170,8 @@
     "course": "Technology Communication Management",
     "year_level": "4th Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1129,8 +1185,8 @@
     "course": "Technology Communication Management",
     "year_level": "4th Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1144,8 +1200,8 @@
     "course": "GENERAL",
     "year_level": "1st Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1159,8 +1215,8 @@
     "course": "GENERAL",
     "year_level": "1st Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1174,8 +1230,8 @@
     "course": "GENERAL",
     "year_level": "1st Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1189,8 +1245,8 @@
     "course": "GENERAL",
     "year_level": "1st Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1204,8 +1260,8 @@
     "course": "GENERAL",
     "year_level": "1st Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1219,8 +1275,8 @@
     "course": "GENERAL",
     "year_level": "1st Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1234,8 +1290,8 @@
     "course": "GENERAL",
     "year_level": "1st Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1249,8 +1305,8 @@
     "course": "GENERAL",
     "year_level": "1st Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1264,8 +1320,8 @@
     "course": "GENERAL",
     "year_level": "2nd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1279,8 +1335,8 @@
     "course": "GENERAL",
     "year_level": "2nd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1294,8 +1350,8 @@
     "course": "GENERAL",
     "year_level": "2nd Year",
     "semester": "1st Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1309,8 +1365,8 @@
     "course": "GENERAL",
     "year_level": "2nd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1324,8 +1380,8 @@
     "course": "GENERAL",
     "year_level": "2nd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
   }
 },
 {
@@ -1339,17 +1395,75 @@
     "course": "GENERAL",
     "year_level": "2nd Year",
     "semester": "2nd Sem",
-    "created_at": "2026-05-20T15:18:03Z",
-    "updated_at": "2026-05-20T15:18:03Z"
+    "created_at": "2026-05-20T07:18:03Z",
+    "updated_at": "2026-05-20T07:18:03Z"
+  }
+},
+{
+  "model": "core.subject",
+  "pk": 82,
+  "fields": {
+    "subject_code": "IT-312",
+    "subject_name": "INTEG",
+    "description": "",
+    "units": 3,
+    "course": "Information Technology",
+    "year_level": "3rd Year",
+    "semester": "2nd Sem",
+    "created_at": "2026-05-25T16:19:16.231Z",
+    "updated_at": "2026-05-25T16:19:16.231Z"
+  }
+},
+{
+  "model": "core.subject",
+  "pk": 83,
+  "fields": {
+    "subject_code": "IT333",
+    "subject_name": "Appteg",
+    "description": "",
+    "units": 3,
+    "course": "Information Technology",
+    "year_level": "3rd Year",
+    "semester": "2nd Sem",
+    "created_at": "2026-05-25T16:22:17.121Z",
+    "updated_at": "2026-05-25T16:22:17.121Z"
+  }
+},
+{
+  "model": "core.subject",
+  "pk": 84,
+  "fields": {
+    "subject_code": "IT111",
+    "subject_name": "INTRO TO C",
+    "description": "",
+    "units": 3,
+    "course": "Information Technology",
+    "year_level": "1st Year",
+    "semester": "1st Sem",
+    "created_at": "2026-05-25T16:36:42.751Z",
+    "updated_at": "2026-05-25T16:36:42.751Z"
+  }
+},
+{
+  "model": "core.subject",
+  "pk": 85,
+  "fields": {
+    "subject_code": "B421",
+    "subject_name": "Athlete",
+    "description": "",
+    "units": 3,
+    "course": "Information Technology",
+    "year_level": "1st Year",
+    "semester": "1st Sem",
+    "created_at": "2026-05-25T16:43:28.553Z",
+    "updated_at": "2026-05-25T16:47:41.538Z"
   }
 },
 {
   "model": "core.student",
   "pk": 3,
   "fields": {
-    "user": [
-      "admin@gmail.com"
-    ],
+    "user": 3,
     "first_name": "",
     "middle_name": "",
     "last_name": "",
@@ -1366,17 +1480,15 @@
     "enrolled_date": "2026-05-20",
     "max_units": 50,
     "is_active": true,
-    "created_at": "2026-05-19T17:40:08.735Z",
-    "updated_at": "2026-05-25T15:09:21.568Z"
+    "created_at": "2026-05-19T09:40:08.735Z",
+    "updated_at": "2026-05-25T16:17:54.228Z"
   }
 },
 {
   "model": "core.student",
   "pk": 19,
   "fields": {
-    "user": [
-      "katsubalabat@gmail.com"
-    ],
+    "user": 20,
     "first_name": "nathaniel",
     "middle_name": "betonio",
     "last_name": "balingkit",
@@ -1393,17 +1505,15 @@
     "enrolled_date": "2026-05-20",
     "max_units": 50,
     "is_active": true,
-    "created_at": "2026-05-20T15:26:08.248Z",
-    "updated_at": "2026-05-21T02:14:58.176Z"
+    "created_at": "2026-05-20T07:26:08.248Z",
+    "updated_at": "2026-05-20T18:14:58.176Z"
   }
 },
 {
   "model": "core.student",
   "pk": 20,
   "fields": {
-    "user": [
-      "jave@gmail.com"
-    ],
+    "user": 21,
     "first_name": "",
     "middle_name": "balabat",
     "last_name": "",
@@ -1420,17 +1530,15 @@
     "enrolled_date": "2026-05-21",
     "max_units": 50,
     "is_active": false,
-    "created_at": "2026-05-20T16:20:15.916Z",
-    "updated_at": "2026-05-25T15:10:09.041Z"
+    "created_at": "2026-05-20T08:20:15.916Z",
+    "updated_at": "2026-05-25T07:10:09.041Z"
   }
 },
 {
   "model": "core.student",
   "pk": 21,
   "fields": {
-    "user": [
-      "balabat@gmail.com"
-    ],
+    "user": 22,
     "first_name": "jave",
     "middle_name": "balabat",
     "last_name": "sumatra",
@@ -1447,20 +1555,18 @@
     "enrolled_date": "2026-05-21",
     "max_units": 50,
     "is_active": true,
-    "created_at": "2026-05-20T16:42:02.915Z",
-    "updated_at": "2026-05-21T02:14:37.536Z"
+    "created_at": "2026-05-20T08:42:02.915Z",
+    "updated_at": "2026-05-20T18:14:37.536Z"
   }
 },
 {
   "model": "core.student",
   "pk": 22,
   "fields": {
-    "user": [
-      "ambot@gmail.com"
-    ],
+    "user": 23,
     "first_name": "bryan",
     "middle_name": "balabat",
-    "last_name": "apal",
+    "last_name": "apals",
     "email": "ambot@gmail.com",
     "student_number": "09011065503",
     "parent_name": "jave bbayot",
@@ -1474,17 +1580,15 @@
     "enrolled_date": "2026-05-21",
     "max_units": 50,
     "is_active": true,
-    "created_at": "2026-05-20T16:46:14.389Z",
-    "updated_at": "2026-05-21T02:15:23.334Z"
+    "created_at": "2026-05-20T08:46:14.389Z",
+    "updated_at": "2026-05-25T16:51:25.848Z"
   }
 },
 {
   "model": "core.student",
   "pk": 23,
   "fields": {
-    "user": [
-      "brent@gmail.com"
-    ],
+    "user": 24,
     "first_name": "brent",
     "middle_name": "balabat",
     "last_name": "benigay",
@@ -1500,18 +1604,16 @@
     "profile_picture": "",
     "enrolled_date": "2026-05-21",
     "max_units": 50,
-    "is_active": true,
-    "created_at": "2026-05-21T02:19:14.917Z",
-    "updated_at": "2026-05-21T02:19:14.917Z"
+    "is_active": false,
+    "created_at": "2026-05-20T18:19:14.917Z",
+    "updated_at": "2026-05-20T18:19:14.917Z"
   }
 },
 {
   "model": "core.student",
   "pk": 24,
   "fields": {
-    "user": [
-      "christian@gmail.com"
-    ],
+    "user": 25,
     "first_name": "christian",
     "middle_name": "benigay",
     "last_name": "songalia",
@@ -1528,17 +1630,15 @@
     "enrolled_date": "2026-05-21",
     "max_units": 50,
     "is_active": true,
-    "created_at": "2026-05-21T02:35:23.283Z",
-    "updated_at": "2026-05-21T02:35:38.513Z"
+    "created_at": "2026-05-20T18:35:23.283Z",
+    "updated_at": "2026-05-20T18:35:38.513Z"
   }
 },
 {
   "model": "core.student",
   "pk": 26,
   "fields": {
-    "user": [
-      "rheanbalabat@gmail.com"
-    ],
+    "user": 27,
     "first_name": "",
     "middle_name": "andhre",
     "last_name": "",
@@ -1555,8 +1655,83 @@
     "enrolled_date": "2026-05-22",
     "max_units": 50,
     "is_active": true,
-    "created_at": "2026-05-22T14:23:28.127Z",
-    "updated_at": "2026-05-24T23:32:51.115Z"
+    "created_at": "2026-05-22T06:23:28.127Z",
+    "updated_at": "2026-05-24T15:32:51.115Z"
+  }
+},
+{
+  "model": "core.student",
+  "pk": 28,
+  "fields": {
+    "user": null,
+    "first_name": "emilio",
+    "middle_name": "broken",
+    "last_name": "martinez",
+    "email": "emiliomartinez@gmail.com",
+    "student_number": "20192020",
+    "parent_name": "BrokenHearted",
+    "contact_number": "0922222222222222",
+    "home_address": "Mambuaya",
+    "birthday": "2001-08-26",
+    "course": "Information Technology",
+    "year_level": "1st Year",
+    "semester": "1st Sem",
+    "profile_picture": "",
+    "enrolled_date": "2026-05-26",
+    "max_units": 50,
+    "is_active": true,
+    "created_at": "2026-05-25T16:39:50.612Z",
+    "updated_at": "2026-05-25T16:39:50.612Z"
+  }
+},
+{
+  "model": "core.student",
+  "pk": 32,
+  "fields": {
+    "user": 30,
+    "first_name": "Bambie",
+    "middle_name": "Bangcal",
+    "last_name": "Sumatra",
+    "email": "bambiebangcal@gmail.com",
+    "student_number": "20222232",
+    "parent_name": "Yuero Sumatra",
+    "contact_number": "092323232",
+    "home_address": "bugo",
+    "birthday": null,
+    "course": "Information Technology",
+    "year_level": "1st Year",
+    "semester": "1st Sem",
+    "profile_picture": "profile_pictures/profile_wsA7BAr.jpg",
+    "enrolled_date": "2026-05-27",
+    "max_units": 50,
+    "is_active": true,
+    "created_at": "2026-05-27T15:53:19.471Z",
+    "updated_at": "2026-05-27T16:02:50.445Z"
+  }
+},
+{
+  "model": "core.student",
+  "pk": 33,
+  "fields": {
+    "user": 31,
+    "first_name": "kylle",
+    "middle_name": "embudo",
+    "last_name": "sumatra",
+    "email": "kyllesumatra@gmail.com",
+    "student_number": "23232331",
+    "parent_name": "Betty SUmatra",
+    "contact_number": "0923121312",
+    "home_address": "Bugo ZOne 6",
+    "birthday": "2002-03-26",
+    "course": "Computer Science",
+    "year_level": "2nd Year",
+    "semester": "1st Sem",
+    "profile_picture": "",
+    "enrolled_date": "2026-05-28",
+    "max_units": 50,
+    "is_active": true,
+    "created_at": "2026-05-27T16:06:54.344Z",
+    "updated_at": "2026-05-27T16:06:54.344Z"
   }
 },
 {
@@ -1577,7 +1752,7 @@
   "fields": {
     "subject": 24,
     "section_name": "A",
-    "max_capacity": 40,
+    "max_capacity": 39,
     "current_count": 0,
     "room": "",
     "schedule": ""
@@ -1589,7 +1764,7 @@
   "fields": {
     "subject": 25,
     "section_name": "A",
-    "max_capacity": 40,
+    "max_capacity": 39,
     "current_count": 0,
     "room": "",
     "schedule": ""
@@ -1601,7 +1776,7 @@
   "fields": {
     "subject": 26,
     "section_name": "A",
-    "max_capacity": 40,
+    "max_capacity": 39,
     "current_count": 0,
     "room": "",
     "schedule": ""
@@ -1614,7 +1789,7 @@
     "subject": 27,
     "section_name": "A",
     "max_capacity": 40,
-    "current_count": 1,
+    "current_count": 2,
     "room": "",
     "schedule": ""
   }
@@ -1626,7 +1801,7 @@
     "subject": 28,
     "section_name": "A",
     "max_capacity": 40,
-    "current_count": 1,
+    "current_count": 2,
     "room": "",
     "schedule": ""
   }
@@ -1638,7 +1813,7 @@
     "subject": 29,
     "section_name": "A",
     "max_capacity": 40,
-    "current_count": 1,
+    "current_count": 2,
     "room": "",
     "schedule": ""
   }
@@ -1830,7 +2005,7 @@
     "subject": 67,
     "section_name": "A",
     "max_capacity": 40,
-    "current_count": 4,
+    "current_count": 6,
     "room": "",
     "schedule": ""
   }
@@ -1842,7 +2017,7 @@
     "subject": 68,
     "section_name": "A",
     "max_capacity": 40,
-    "current_count": 4,
+    "current_count": 6,
     "room": "",
     "schedule": ""
   }
@@ -1878,7 +2053,7 @@
     "subject": 75,
     "section_name": "A",
     "max_capacity": 40,
-    "current_count": 1,
+    "current_count": 2,
     "room": "",
     "schedule": ""
   }
@@ -1890,7 +2065,7 @@
     "subject": 76,
     "section_name": "A",
     "max_capacity": 40,
-    "current_count": 1,
+    "current_count": 2,
     "room": "",
     "schedule": ""
   }
@@ -1926,7 +2101,7 @@
     "subject": 1,
     "section_name": "A",
     "max_capacity": 40,
-    "current_count": 4,
+    "current_count": 6,
     "room": "903",
     "schedule": "Thursday"
   }
@@ -1938,7 +2113,7 @@
     "subject": 2,
     "section_name": "A",
     "max_capacity": 40,
-    "current_count": 4,
+    "current_count": 6,
     "room": "",
     "schedule": ""
   }
@@ -2190,7 +2365,7 @@
     "subject": 70,
     "section_name": "A",
     "max_capacity": 40,
-    "current_count": 4,
+    "current_count": 6,
     "room": "",
     "schedule": ""
   }
@@ -2214,7 +2389,7 @@
     "subject": 69,
     "section_name": "A",
     "max_capacity": 40,
-    "current_count": 4,
+    "current_count": 6,
     "room": "",
     "schedule": ""
   }
@@ -2238,7 +2413,7 @@
     "subject": 77,
     "section_name": "A",
     "max_capacity": 40,
-    "current_count": 1,
+    "current_count": 2,
     "room": "",
     "schedule": ""
   }
@@ -2520,6 +2695,66 @@
   }
 },
 {
+  "model": "core.section",
+  "pk": 83,
+  "fields": {
+    "subject": 82,
+    "section_name": "A",
+    "max_capacity": 40,
+    "current_count": 1,
+    "room": "",
+    "schedule": ""
+  }
+},
+{
+  "model": "core.section",
+  "pk": 84,
+  "fields": {
+    "subject": 23,
+    "section_name": "ITC",
+    "max_capacity": 40,
+    "current_count": 0,
+    "room": "09-304",
+    "schedule": "4pm to 6pm"
+  }
+},
+{
+  "model": "core.section",
+  "pk": 86,
+  "fields": {
+    "subject": 24,
+    "section_name": "YES",
+    "max_capacity": 40,
+    "current_count": 0,
+    "room": "232",
+    "schedule": "4am"
+  }
+},
+{
+  "model": "core.section",
+  "pk": 87,
+  "fields": {
+    "subject": 84,
+    "section_name": "AB",
+    "max_capacity": 40,
+    "current_count": 3,
+    "room": "",
+    "schedule": ""
+  }
+},
+{
+  "model": "core.section",
+  "pk": 88,
+  "fields": {
+    "subject": 85,
+    "section_name": "A",
+    "max_capacity": 40,
+    "current_count": 4,
+    "room": "",
+    "schedule": ""
+  }
+},
+{
   "model": "core.enrollment",
   "pk": 25,
   "fields": {
@@ -2527,11 +2762,11 @@
     "subject": 71,
     "section": 25,
     "semester": "2nd Sem",
-    "enrollment_date": "2026-05-20T15:26:08.258Z",
+    "enrollment_date": "2026-05-20T07:26:08.258Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T15:26:08.258Z",
-    "updated_at": "2026-05-20T15:26:08.258Z"
+    "created_at": "2026-05-20T07:26:08.258Z",
+    "updated_at": "2026-05-20T07:26:08.258Z"
   }
 },
 {
@@ -2542,11 +2777,11 @@
     "subject": 72,
     "section": 26,
     "semester": "2nd Sem",
-    "enrollment_date": "2026-05-20T15:26:08.265Z",
+    "enrollment_date": "2026-05-20T07:26:08.265Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T15:26:08.265Z",
-    "updated_at": "2026-05-20T15:26:08.265Z"
+    "created_at": "2026-05-20T07:26:08.265Z",
+    "updated_at": "2026-05-20T07:26:08.265Z"
   }
 },
 {
@@ -2557,11 +2792,11 @@
     "subject": 3,
     "section": 33,
     "semester": "2nd Sem",
-    "enrollment_date": "2026-05-20T15:26:08.271Z",
+    "enrollment_date": "2026-05-20T07:26:08.271Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T15:26:08.271Z",
-    "updated_at": "2026-05-20T15:26:08.271Z"
+    "created_at": "2026-05-20T07:26:08.271Z",
+    "updated_at": "2026-05-20T07:26:08.271Z"
   }
 },
 {
@@ -2572,11 +2807,11 @@
     "subject": 4,
     "section": 34,
     "semester": "2nd Sem",
-    "enrollment_date": "2026-05-20T15:26:08.277Z",
+    "enrollment_date": "2026-05-20T07:26:08.277Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T15:26:08.277Z",
-    "updated_at": "2026-05-20T15:26:08.277Z"
+    "created_at": "2026-05-20T07:26:08.277Z",
+    "updated_at": "2026-05-20T07:26:08.277Z"
   }
 },
 {
@@ -2587,11 +2822,11 @@
     "subject": 74,
     "section": 54,
     "semester": "2nd Sem",
-    "enrollment_date": "2026-05-20T15:26:08.284Z",
+    "enrollment_date": "2026-05-20T07:26:08.284Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T15:26:08.284Z",
-    "updated_at": "2026-05-20T15:26:08.284Z"
+    "created_at": "2026-05-20T07:26:08.284Z",
+    "updated_at": "2026-05-20T07:26:08.284Z"
   }
 },
 {
@@ -2602,11 +2837,11 @@
     "subject": 73,
     "section": 56,
     "semester": "2nd Sem",
-    "enrollment_date": "2026-05-20T15:26:08.292Z",
+    "enrollment_date": "2026-05-20T07:26:08.292Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T15:26:08.292Z",
-    "updated_at": "2026-05-20T15:26:08.292Z"
+    "created_at": "2026-05-20T07:26:08.292Z",
+    "updated_at": "2026-05-20T07:26:08.292Z"
   }
 },
 {
@@ -2617,11 +2852,11 @@
     "subject": 27,
     "section": 5,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-20T16:20:15.925Z",
+    "enrollment_date": "2026-05-20T08:20:15.925Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T16:20:15.925Z",
-    "updated_at": "2026-05-20T16:20:15.925Z"
+    "created_at": "2026-05-20T08:20:15.925Z",
+    "updated_at": "2026-05-20T08:20:15.925Z"
   }
 },
 {
@@ -2632,11 +2867,11 @@
     "subject": 28,
     "section": 6,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-20T16:20:15.933Z",
+    "enrollment_date": "2026-05-20T08:20:15.933Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T16:20:15.933Z",
-    "updated_at": "2026-05-20T16:20:15.933Z"
+    "created_at": "2026-05-20T08:20:15.933Z",
+    "updated_at": "2026-05-20T08:20:15.933Z"
   }
 },
 {
@@ -2647,11 +2882,11 @@
     "subject": 29,
     "section": 7,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-20T16:20:15.938Z",
+    "enrollment_date": "2026-05-20T08:20:15.938Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T16:20:15.938Z",
-    "updated_at": "2026-05-20T16:20:15.938Z"
+    "created_at": "2026-05-20T08:20:15.938Z",
+    "updated_at": "2026-05-20T08:20:15.938Z"
   }
 },
 {
@@ -2662,11 +2897,11 @@
     "subject": 75,
     "section": 27,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-20T16:20:15.945Z",
+    "enrollment_date": "2026-05-20T08:20:15.945Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T16:20:15.945Z",
-    "updated_at": "2026-05-20T16:20:15.945Z"
+    "created_at": "2026-05-20T08:20:15.945Z",
+    "updated_at": "2026-05-20T08:20:15.945Z"
   }
 },
 {
@@ -2677,11 +2912,11 @@
     "subject": 76,
     "section": 28,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-20T16:20:15.953Z",
+    "enrollment_date": "2026-05-20T08:20:15.953Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T16:20:15.953Z",
-    "updated_at": "2026-05-20T16:20:15.953Z"
+    "created_at": "2026-05-20T08:20:15.953Z",
+    "updated_at": "2026-05-20T08:20:15.953Z"
   }
 },
 {
@@ -2692,11 +2927,11 @@
     "subject": 77,
     "section": 57,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-20T16:20:15.958Z",
+    "enrollment_date": "2026-05-20T08:20:15.958Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T16:20:15.958Z",
-    "updated_at": "2026-05-20T16:20:15.958Z"
+    "created_at": "2026-05-20T08:20:15.958Z",
+    "updated_at": "2026-05-20T08:20:15.958Z"
   }
 },
 {
@@ -2707,11 +2942,11 @@
     "subject": 14,
     "section": 44,
     "semester": "2nd Sem",
-    "enrollment_date": "2026-05-20T16:42:02.922Z",
+    "enrollment_date": "2026-05-20T08:42:02.922Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T16:42:02.922Z",
-    "updated_at": "2026-05-20T16:42:02.922Z"
+    "created_at": "2026-05-20T08:42:02.922Z",
+    "updated_at": "2026-05-20T08:42:02.922Z"
   }
 },
 {
@@ -2722,11 +2957,11 @@
     "subject": 15,
     "section": 45,
     "semester": "2nd Sem",
-    "enrollment_date": "2026-05-20T16:42:02.928Z",
+    "enrollment_date": "2026-05-20T08:42:02.928Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T16:42:02.928Z",
-    "updated_at": "2026-05-20T16:42:02.928Z"
+    "created_at": "2026-05-20T08:42:02.928Z",
+    "updated_at": "2026-05-20T08:42:02.928Z"
   }
 },
 {
@@ -2737,11 +2972,11 @@
     "subject": 16,
     "section": 46,
     "semester": "2nd Sem",
-    "enrollment_date": "2026-05-20T16:42:02.933Z",
+    "enrollment_date": "2026-05-20T08:42:02.933Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T16:42:02.934Z",
-    "updated_at": "2026-05-20T16:42:02.934Z"
+    "created_at": "2026-05-20T08:42:02.934Z",
+    "updated_at": "2026-05-20T08:42:02.934Z"
   }
 },
 {
@@ -2752,11 +2987,11 @@
     "subject": 78,
     "section": 29,
     "semester": "2nd Sem",
-    "enrollment_date": "2026-05-20T16:46:14.396Z",
+    "enrollment_date": "2026-05-20T08:46:14.396Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T16:46:14.396Z",
-    "updated_at": "2026-05-20T16:46:14.396Z"
+    "created_at": "2026-05-20T08:46:14.396Z",
+    "updated_at": "2026-05-20T08:46:14.396Z"
   }
 },
 {
@@ -2767,11 +3002,11 @@
     "subject": 79,
     "section": 30,
     "semester": "2nd Sem",
-    "enrollment_date": "2026-05-20T16:46:14.402Z",
+    "enrollment_date": "2026-05-20T08:46:14.402Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T16:46:14.402Z",
-    "updated_at": "2026-05-20T16:46:14.402Z"
+    "created_at": "2026-05-20T08:46:14.402Z",
+    "updated_at": "2026-05-20T08:46:14.402Z"
   }
 },
 {
@@ -2782,11 +3017,11 @@
     "subject": 8,
     "section": 38,
     "semester": "2nd Sem",
-    "enrollment_date": "2026-05-20T16:46:14.408Z",
+    "enrollment_date": "2026-05-20T08:46:14.408Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T16:46:14.408Z",
-    "updated_at": "2026-05-20T16:46:14.408Z"
+    "created_at": "2026-05-20T08:46:14.408Z",
+    "updated_at": "2026-05-20T08:46:14.408Z"
   }
 },
 {
@@ -2797,11 +3032,11 @@
     "subject": 9,
     "section": 39,
     "semester": "2nd Sem",
-    "enrollment_date": "2026-05-20T16:46:14.414Z",
+    "enrollment_date": "2026-05-20T08:46:14.414Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T16:46:14.414Z",
-    "updated_at": "2026-05-20T16:46:14.414Z"
+    "created_at": "2026-05-20T08:46:14.414Z",
+    "updated_at": "2026-05-20T08:46:14.414Z"
   }
 },
 {
@@ -2812,11 +3047,11 @@
     "subject": 10,
     "section": 40,
     "semester": "2nd Sem",
-    "enrollment_date": "2026-05-20T16:46:14.420Z",
+    "enrollment_date": "2026-05-20T08:46:14.420Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T16:46:14.420Z",
-    "updated_at": "2026-05-20T16:46:14.420Z"
+    "created_at": "2026-05-20T08:46:14.420Z",
+    "updated_at": "2026-05-20T08:46:14.420Z"
   }
 },
 {
@@ -2827,11 +3062,11 @@
     "subject": 80,
     "section": 58,
     "semester": "2nd Sem",
-    "enrollment_date": "2026-05-20T16:46:14.425Z",
+    "enrollment_date": "2026-05-20T08:46:14.425Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-20T16:46:14.425Z",
-    "updated_at": "2026-05-20T16:46:14.425Z"
+    "created_at": "2026-05-20T08:46:14.425Z",
+    "updated_at": "2026-05-20T08:46:14.425Z"
   }
 },
 {
@@ -2842,11 +3077,11 @@
     "subject": 17,
     "section": 47,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-21T02:19:14.924Z",
+    "enrollment_date": "2026-05-20T18:19:14.924Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-21T02:19:14.924Z",
-    "updated_at": "2026-05-21T02:19:14.924Z"
+    "created_at": "2026-05-20T18:19:14.924Z",
+    "updated_at": "2026-05-20T18:19:14.924Z"
   }
 },
 {
@@ -2857,11 +3092,11 @@
     "subject": 18,
     "section": 48,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-21T02:19:14.930Z",
+    "enrollment_date": "2026-05-20T18:19:14.930Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-21T02:19:14.930Z",
-    "updated_at": "2026-05-21T02:19:14.930Z"
+    "created_at": "2026-05-20T18:19:14.930Z",
+    "updated_at": "2026-05-20T18:19:14.930Z"
   }
 },
 {
@@ -2872,11 +3107,11 @@
     "subject": 19,
     "section": 49,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-21T02:19:14.935Z",
+    "enrollment_date": "2026-05-20T18:19:14.935Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-21T02:19:14.935Z",
-    "updated_at": "2026-05-21T02:19:14.935Z"
+    "created_at": "2026-05-20T18:19:14.935Z",
+    "updated_at": "2026-05-20T18:19:14.935Z"
   }
 },
 {
@@ -2887,11 +3122,11 @@
     "subject": 67,
     "section": 23,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-21T02:35:23.292Z",
+    "enrollment_date": "2026-05-20T18:35:23.292Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-21T02:35:23.292Z",
-    "updated_at": "2026-05-21T02:35:23.292Z"
+    "created_at": "2026-05-20T18:35:23.292Z",
+    "updated_at": "2026-05-20T18:35:23.292Z"
   }
 },
 {
@@ -2902,11 +3137,11 @@
     "subject": 68,
     "section": 24,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-21T02:35:23.298Z",
+    "enrollment_date": "2026-05-20T18:35:23.298Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-21T02:35:23.298Z",
-    "updated_at": "2026-05-21T02:35:23.298Z"
+    "created_at": "2026-05-20T18:35:23.298Z",
+    "updated_at": "2026-05-20T18:35:23.298Z"
   }
 },
 {
@@ -2917,11 +3152,11 @@
     "subject": 1,
     "section": 31,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-21T02:35:23.305Z",
+    "enrollment_date": "2026-05-20T18:35:23.305Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-21T02:35:23.305Z",
-    "updated_at": "2026-05-21T02:35:23.305Z"
+    "created_at": "2026-05-20T18:35:23.305Z",
+    "updated_at": "2026-05-20T18:35:23.305Z"
   }
 },
 {
@@ -2932,11 +3167,11 @@
     "subject": 2,
     "section": 32,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-21T02:35:23.311Z",
+    "enrollment_date": "2026-05-20T18:35:23.311Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-21T02:35:23.311Z",
-    "updated_at": "2026-05-21T02:35:23.312Z"
+    "created_at": "2026-05-20T18:35:23.311Z",
+    "updated_at": "2026-05-20T18:35:23.312Z"
   }
 },
 {
@@ -2947,11 +3182,11 @@
     "subject": 70,
     "section": 53,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-21T02:35:23.318Z",
+    "enrollment_date": "2026-05-20T18:35:23.318Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-21T02:35:23.318Z",
-    "updated_at": "2026-05-21T02:35:23.318Z"
+    "created_at": "2026-05-20T18:35:23.318Z",
+    "updated_at": "2026-05-20T18:35:23.318Z"
   }
 },
 {
@@ -2962,11 +3197,11 @@
     "subject": 69,
     "section": 55,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-21T02:35:23.324Z",
+    "enrollment_date": "2026-05-20T18:35:23.324Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-21T02:35:23.324Z",
-    "updated_at": "2026-05-21T02:35:23.324Z"
+    "created_at": "2026-05-20T18:35:23.324Z",
+    "updated_at": "2026-05-20T18:35:23.324Z"
   }
 },
 {
@@ -2977,11 +3212,11 @@
     "subject": 67,
     "section": 23,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-22T14:23:28.137Z",
+    "enrollment_date": "2026-05-22T06:23:28.137Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-22T14:23:28.137Z",
-    "updated_at": "2026-05-22T14:23:28.137Z"
+    "created_at": "2026-05-22T06:23:28.137Z",
+    "updated_at": "2026-05-22T06:23:28.137Z"
   }
 },
 {
@@ -2992,11 +3227,11 @@
     "subject": 68,
     "section": 24,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-22T14:23:28.144Z",
+    "enrollment_date": "2026-05-22T06:23:28.144Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-22T14:23:28.144Z",
-    "updated_at": "2026-05-22T14:23:28.144Z"
+    "created_at": "2026-05-22T06:23:28.144Z",
+    "updated_at": "2026-05-22T06:23:28.144Z"
   }
 },
 {
@@ -3007,11 +3242,11 @@
     "subject": 1,
     "section": 31,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-22T14:23:28.151Z",
+    "enrollment_date": "2026-05-22T06:23:28.151Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-22T14:23:28.151Z",
-    "updated_at": "2026-05-22T14:23:28.151Z"
+    "created_at": "2026-05-22T06:23:28.151Z",
+    "updated_at": "2026-05-22T06:23:28.151Z"
   }
 },
 {
@@ -3022,11 +3257,11 @@
     "subject": 2,
     "section": 32,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-22T14:23:28.157Z",
+    "enrollment_date": "2026-05-22T06:23:28.157Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-22T14:23:28.157Z",
-    "updated_at": "2026-05-22T14:23:28.157Z"
+    "created_at": "2026-05-22T06:23:28.157Z",
+    "updated_at": "2026-05-22T06:23:28.157Z"
   }
 },
 {
@@ -3037,11 +3272,11 @@
     "subject": 70,
     "section": 53,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-22T14:23:28.164Z",
+    "enrollment_date": "2026-05-22T06:23:28.164Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-22T14:23:28.164Z",
-    "updated_at": "2026-05-22T14:23:28.164Z"
+    "created_at": "2026-05-22T06:23:28.164Z",
+    "updated_at": "2026-05-22T06:23:28.164Z"
   }
 },
 {
@@ -3052,11 +3287,326 @@
     "subject": 69,
     "section": 55,
     "semester": "1st Sem",
-    "enrollment_date": "2026-05-22T14:23:28.170Z",
+    "enrollment_date": "2026-05-22T06:23:28.170Z",
     "status": "ENROLLED",
     "remarks": "",
-    "created_at": "2026-05-22T14:23:28.171Z",
-    "updated_at": "2026-05-22T14:23:28.171Z"
+    "created_at": "2026-05-22T06:23:28.171Z",
+    "updated_at": "2026-05-22T06:23:28.171Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 75,
+  "fields": {
+    "student": 21,
+    "subject": 82,
+    "section": 83,
+    "semester": "2nd Sem",
+    "enrollment_date": "2026-05-25T16:19:16.260Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-25T16:19:16.260Z",
+    "updated_at": "2026-05-25T16:19:16.260Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 76,
+  "fields": {
+    "student": 21,
+    "subject": 83,
+    "section": null,
+    "semester": "2nd Sem",
+    "enrollment_date": "2026-05-25T16:22:17.153Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-25T16:22:17.153Z",
+    "updated_at": "2026-05-25T16:22:17.153Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 77,
+  "fields": {
+    "student": 26,
+    "subject": 84,
+    "section": 87,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-25T16:36:42.786Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-25T16:36:42.786Z",
+    "updated_at": "2026-05-25T16:36:42.786Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 78,
+  "fields": {
+    "student": 24,
+    "subject": 84,
+    "section": 87,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-25T16:36:42.801Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-25T16:36:42.801Z",
+    "updated_at": "2026-05-25T16:36:42.801Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 79,
+  "fields": {
+    "student": 26,
+    "subject": 85,
+    "section": 88,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-25T16:43:28.582Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-25T16:43:28.582Z",
+    "updated_at": "2026-05-25T16:43:28.582Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 80,
+  "fields": {
+    "student": 28,
+    "subject": 85,
+    "section": 88,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-25T16:43:28.594Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-25T16:43:28.594Z",
+    "updated_at": "2026-05-25T16:43:28.594Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 81,
+  "fields": {
+    "student": 24,
+    "subject": 85,
+    "section": 88,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-25T16:43:28.606Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-25T16:43:28.606Z",
+    "updated_at": "2026-05-25T16:43:28.606Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 92,
+  "fields": {
+    "student": 32,
+    "subject": 85,
+    "section": 88,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-27T15:53:19.492Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-27T15:53:19.492Z",
+    "updated_at": "2026-05-27T15:53:19.492Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 93,
+  "fields": {
+    "student": 32,
+    "subject": 67,
+    "section": 23,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-27T15:53:19.503Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-27T15:53:19.503Z",
+    "updated_at": "2026-05-27T15:53:19.503Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 94,
+  "fields": {
+    "student": 32,
+    "subject": 68,
+    "section": 24,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-27T15:53:19.514Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-27T15:53:19.514Z",
+    "updated_at": "2026-05-27T15:53:19.514Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 95,
+  "fields": {
+    "student": 32,
+    "subject": 1,
+    "section": 31,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-27T15:53:19.525Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-27T15:53:19.525Z",
+    "updated_at": "2026-05-27T15:53:19.525Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 96,
+  "fields": {
+    "student": 32,
+    "subject": 2,
+    "section": 32,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-27T15:53:19.534Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-27T15:53:19.535Z",
+    "updated_at": "2026-05-27T15:53:19.535Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 97,
+  "fields": {
+    "student": 32,
+    "subject": 84,
+    "section": 87,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-27T15:53:19.545Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-27T15:53:19.546Z",
+    "updated_at": "2026-05-27T15:53:19.546Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 98,
+  "fields": {
+    "student": 32,
+    "subject": 70,
+    "section": 53,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-27T15:53:19.558Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-27T15:53:19.558Z",
+    "updated_at": "2026-05-27T15:53:19.558Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 99,
+  "fields": {
+    "student": 32,
+    "subject": 69,
+    "section": 55,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-27T15:53:19.571Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-27T15:53:19.571Z",
+    "updated_at": "2026-05-27T15:53:19.571Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 100,
+  "fields": {
+    "student": 33,
+    "subject": 27,
+    "section": 5,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-27T16:06:54.367Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-27T16:06:54.367Z",
+    "updated_at": "2026-05-27T16:06:54.367Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 101,
+  "fields": {
+    "student": 33,
+    "subject": 28,
+    "section": 6,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-27T16:06:54.379Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-27T16:06:54.379Z",
+    "updated_at": "2026-05-27T16:06:54.379Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 102,
+  "fields": {
+    "student": 33,
+    "subject": 29,
+    "section": 7,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-27T16:06:54.391Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-27T16:06:54.391Z",
+    "updated_at": "2026-05-27T16:06:54.391Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 103,
+  "fields": {
+    "student": 33,
+    "subject": 75,
+    "section": 27,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-27T16:06:54.403Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-27T16:06:54.403Z",
+    "updated_at": "2026-05-27T16:06:54.403Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 104,
+  "fields": {
+    "student": 33,
+    "subject": 76,
+    "section": 28,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-27T16:06:54.413Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-27T16:06:54.413Z",
+    "updated_at": "2026-05-27T16:06:54.413Z"
+  }
+},
+{
+  "model": "core.enrollment",
+  "pk": 105,
+  "fields": {
+    "student": 33,
+    "subject": 77,
+    "section": 57,
+    "semester": "1st Sem",
+    "enrollment_date": "2026-05-27T16:06:54.424Z",
+    "status": "ENROLLED",
+    "remarks": "",
+    "created_at": "2026-05-27T16:06:54.424Z",
+    "updated_at": "2026-05-27T16:06:54.424Z"
   }
 }
 ]

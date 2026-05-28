@@ -110,9 +110,14 @@ def send_activation_email(user):
             "Gmail rejected the sender login. Generate a new Google App Password "
             "for the same Gmail account in GMAIL_EMAIL, then update GMAIL_APP_PASSWORD."
         ) from exc
-    except (OSError, smtplib.SMTPException, socket.error):
+    except (OSError, smtplib.SMTPException, socket.error) as exc:
         logger.exception("Activation email could not be sent")
-        return False
+        raise ImproperlyConfigured(
+            "Verification email could not be sent because the server cannot reach "
+            "the SMTP provider. Check GMAIL_EMAIL, GMAIL_APP_PASSWORD, and whether "
+            "your deploy host allows outbound SMTP. Original error: "
+            f"{exc}"
+        ) from exc
 
     return True
 
@@ -347,21 +352,10 @@ def register_user(request):
 
             email_sent = send_activation_email(student.user)
 
-            if not email_sent:
-                student.user.email_verified = True
-                student.user.clear_activation_code()
-                student.user.save(update_fields=[
-                    'email_verified',
-                    'activation_code',
-                    'activation_code_expires_at',
-                ])
-
             return Response({
                 "message": (
                     "Registration submitted. Please check your Gmail for the verification code. "
                     "After verification, wait for admin activation before logging in."
-                    if email_sent
-                    else "Registration submitted. Email delivery is unavailable, so your email was marked verified. Please wait for admin activation before logging in."
                 ),
                 "email_sent": email_sent,
                 "student_id": student.id,

@@ -147,19 +147,12 @@ export default function Register() {
         registerRes.data?.message ||
         `Account created but not activated yet. Auto-enrolled ${registerRes.data.auto_enrolled_count || 0} subject(s). ${registerRes.data.waitlisted_count || 0} waitlisted.`;
 
-      Alert.alert(
-        registerRes.data?.email_verified ? "Registration Submitted" : "Verify Your Email",
-        message
-      );
+      Alert.alert("Verify Your Email", message);
 
-      if (registerRes.data?.email_verified) {
-        router.replace("/(auth)/login" as any);
-      } else {
-        router.replace({
-          pathname: "/(auth)/verify",
-          params: { email: email.trim().toLowerCase() },
-        } as any);
-      }
+      router.replace({
+        pathname: "/(auth)/verify",
+        params: { email: email.trim().toLowerCase() },
+      } as any);
     } catch (error: any) {
       console.log(
         "REGISTER ERROR:",

@@ -2,6 +2,7 @@
 
 import logging
 import smtplib
+import socket
 
 from django.db import IntegrityError, transaction
 from django.db.models import Q
@@ -109,6 +110,11 @@ def send_activation_email(user):
             "Gmail rejected the sender login. Generate a new Google App Password "
             "for the same Gmail account in GMAIL_EMAIL, then update GMAIL_APP_PASSWORD."
         ) from exc
+    except (OSError, smtplib.SMTPException, socket.error):
+        logger.exception("Activation email could not be sent")
+        return False
+
+    return True
 
 
 def first_serializer_error(errors):
@@ -339,13 +345,25 @@ def register_user(request):
                 student
             )
 
-            send_activation_email(student.user)
+            email_sent = send_activation_email(student.user)
+
+            if not email_sent:
+                student.user.email_verified = True
+                student.user.clear_activation_code()
+                student.user.save(update_fields=[
+                    'email_verified',
+                    'activation_code',
+                    'activation_code_expires_at',
+                ])
 
             return Response({
                 "message": (
                     "Registration submitted. Please check your Gmail for the verification code. "
                     "After verification, wait for admin activation before logging in."
+                    if email_sent
+                    else "Registration submitted. Email delivery is unavailable, so your email was marked verified. Please wait for admin activation before logging in."
                 ),
+                "email_sent": email_sent,
                 "student_id": student.id,
                 "email": student.email,
                 "is_active": student.user.is_active,

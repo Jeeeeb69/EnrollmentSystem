@@ -143,15 +143,23 @@ export default function Register() {
 
       const registerRes = await api.post("auth/register/", payload);
 
+      const message =
+        registerRes.data?.message ||
+        `Account created but not activated yet. Auto-enrolled ${registerRes.data.auto_enrolled_count || 0} subject(s). ${registerRes.data.waitlisted_count || 0} waitlisted.`;
+
       Alert.alert(
-        "Verify Your Email",
-        `Account created but not activated yet. Check your email for the 6-digit code. Auto-enrolled ${registerRes.data.auto_enrolled_count || 0} subject(s). ${registerRes.data.waitlisted_count || 0} waitlisted.`
+        registerRes.data?.email_verified ? "Registration Submitted" : "Verify Your Email",
+        message
       );
 
-      router.replace({
-        pathname: "/(auth)/verify",
-        params: { email: email.trim().toLowerCase() },
-      } as any);
+      if (registerRes.data?.email_verified) {
+        router.replace("/(auth)/login" as any);
+      } else {
+        router.replace({
+          pathname: "/(auth)/verify",
+          params: { email: email.trim().toLowerCase() },
+        } as any);
+      }
     } catch (error: any) {
       console.log(
         "REGISTER ERROR:",

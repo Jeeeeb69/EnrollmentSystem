@@ -112,6 +112,7 @@ ASGI_APPLICATION = 'enrollment_system.asgi.application'
 # DATABASE
 # =====================================================
 IS_RAILWAY = bool(os.environ.get("RAILWAY_ENVIRONMENT"))
+IS_RENDER = bool(os.environ.get("RENDER") or os.environ.get("RENDER_SERVICE_ID"))
 
 DATABASE_URL_ENV_KEYS = (
     "DATABASE_URL",
@@ -126,13 +127,22 @@ DATABASE_SOURCE = next(
     None,
 )
 DATABASE_URL = os.environ.get(DATABASE_SOURCE) if DATABASE_SOURCE else None
+DATABASE_URL_REQUIRES_SSL = (
+    IS_RENDER
+    or IS_RAILWAY
+    or bool(DATABASE_URL and "render.com" in DATABASE_URL)
+)
+DATABASE_SSL_REQUIRE = os.environ.get(
+    "POSTGRES_SSL_REQUIRE",
+    "true" if DATABASE_URL_REQUIRES_SSL else "false",
+).lower() == "true"
 
 if DATABASE_URL:
     DATABASES = {
         "default": dj_database_url.parse(
             DATABASE_URL,
             conn_max_age=600,
-            ssl_require=os.environ.get("POSTGRES_SSL_REQUIRE", "false").lower() == "true",
+            ssl_require=DATABASE_SSL_REQUIRE,
         )
     }
 elif all(

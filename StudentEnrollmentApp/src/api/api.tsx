@@ -10,8 +10,9 @@ import { tokenStorage } from './storage';
 // -------------------
 // Base URL
 // -------------------
-const LAN_API_URL = 'http://192.168.1.57:8000/api/';
-const WEB_API_URL = 'https://enrollmentsystem-uuds.onrender.com/admin/login/?next=/admin/';
+const DEPLOYED_API_URL = 'https://enrollmentsystem-uuds.onrender.com/api/';
+const LAN_API_URL = DEPLOYED_API_URL;
+const WEB_API_URL = DEPLOYED_API_URL;
 const ANDROID_EMULATOR_API_URL = 'http://10.0.2.2:8000/api/';
 
 const getApiBaseUrl = () => {

@@ -128,13 +128,6 @@ DATABASE_SOURCE = next(
 DATABASE_URL = os.environ.get(DATABASE_SOURCE) if DATABASE_SOURCE else None
 
 if DATABASE_URL:
-    DATABASES = {
-        "default": dj_database_url.parse(
-            DATABASE_URL,
-            conn_max_age=600,
-            ssl_require=os.environ.get("POSTGRES_SSL_REQUIRE", "false").lower() == "true",
-        )
-    }
 elif all(
     os.environ.get(key)
     for key in ("PGDATABASE", "PGUSER", "PGPASSWORD", "PGHOST")
@@ -145,16 +138,7 @@ elif all(
     os.environ.get(key)
     for key in ("POSTGRES_DB", "POSTGRES_USER", "POSTGRES_PASSWORD", "POSTGRES_HOST")
 ):
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.environ["POSTGRES_DB"],
-            "USER": os.environ["POSTGRES_USER"],
-            "PASSWORD": os.environ["POSTGRES_PASSWORD"],
-            "HOST": os.environ["POSTGRES_HOST"],
-            "PORT": os.environ.get("POSTGRES_PORT", "5432"),
-        }
-    }
+
     DATABASE_SOURCE = "POSTGRES_DB/POSTGRES_USER/POSTGRES_PASSWORD/POSTGRES_HOST"
 elif IS_RAILWAY:
     raise RuntimeError(

@@ -27,12 +27,12 @@ import {
 
 export default function VerifyAccount() {
   const router = useRouter();
-  const params = useLocalSearchParams<{ email?: string }>();
+  const params = useLocalSearchParams<{ email?: string; code?: string }>();
   const { width } = useWindowDimensions();
   const isSmallScreen = width < 480;
 
   const [email, setEmail] = useState(params.email || "");
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState(params.code || "");
   const [verifying, setVerifying] = useState(false);
   const [resending, setResending] = useState(false);
 

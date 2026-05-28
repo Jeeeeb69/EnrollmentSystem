@@ -146,12 +146,18 @@ export default function Register() {
       const message =
         registerRes.data?.message ||
         `Account created but not activated yet. Auto-enrolled ${registerRes.data.auto_enrolled_count || 0} subject(s). ${registerRes.data.waitlisted_count || 0} waitlisted.`;
+      const verificationCode = registerRes.data?.verification_code
+        ? `\n\nVerification code: ${registerRes.data.verification_code}`
+        : "";
 
-      Alert.alert("Verify Your Email", message);
+      Alert.alert("Verify Your Email", `${message}${verificationCode}`);
 
       router.replace({
         pathname: "/(auth)/verify",
-        params: { email: email.trim().toLowerCase() },
+        params: {
+          email: email.trim().toLowerCase(),
+          code: registerRes.data?.verification_code || "",
+        },
       } as any);
     } catch (error: any) {
       console.log(

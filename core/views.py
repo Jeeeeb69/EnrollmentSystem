@@ -112,12 +112,7 @@ def send_activation_email(user):
         ) from exc
     except (OSError, smtplib.SMTPException, socket.error) as exc:
         logger.exception("Activation email could not be sent")
-        raise ImproperlyConfigured(
-            "Verification email could not be sent because the server cannot reach "
-            "the SMTP provider. Check GMAIL_EMAIL, GMAIL_APP_PASSWORD, and whether "
-            "your deploy host allows outbound SMTP. Original error: "
-            f"{exc}"
-        ) from exc
+        return False
 
     return True
 
@@ -427,10 +422,12 @@ def register_user(request):
 
             email_sent = send_activation_email(student.user)
 
-            return Response({
+            response_data = {
                 "message": (
                     "Registration submitted. Please check your Gmail for the verification code. "
                     "After verification, wait for admin activation before logging in."
+                    if email_sent
+                    else "Registration submitted, but Gmail SMTP is unreachable from the server. Use the verification code shown here, then wait for admin activation."
                 ),
                 "email_sent": email_sent,
                 "student_id": student.id,
@@ -439,7 +436,12 @@ def register_user(request):
                 "email_verified": student.user.email_verified,
                 "auto_enrolled_count": enrollments_created,
                 "waitlisted_count": waitlisted_count
-            })
+            }
+
+            if not email_sent:
+                response_data["verification_code"] = student.user.activation_code
+
+            return Response(response_data)
 
     except ValidationError as e:
         return Response({

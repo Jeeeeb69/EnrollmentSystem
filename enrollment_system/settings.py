@@ -139,16 +139,7 @@ elif all(
     os.environ.get(key)
     for key in ("PGDATABASE", "PGUSER", "PGPASSWORD", "PGHOST")
 ):
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.environ["PGDATABASE"],
-            "USER": os.environ["PGUSER"],
-            "PASSWORD": os.environ["PGPASSWORD"],
-            "HOST": os.environ["PGHOST"],
-            "PORT": os.environ.get("PGPORT", "5432"),
-        }
-    }
+
     DATABASE_SOURCE = "PGDATABASE/PGUSER/PGPASSWORD/PGHOST"
 elif all(
     os.environ.get(key)

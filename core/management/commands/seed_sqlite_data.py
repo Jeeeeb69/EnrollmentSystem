@@ -1,10 +1,9 @@
-import json
 import os
 
 from django.conf import settings
 from django.core.management import call_command
 from django.core.management.base import BaseCommand, CommandError
-from django.db import transaction
+from django.db import connection, transaction
 
 from core.models import Enrollment, Section, Student, Subject, User
 
@@ -30,18 +29,15 @@ class Command(BaseCommand):
             self.stdout.write("School data already exists; skipping sqlite_data.json seed.")
             return
 
-        with fixture_path.open(encoding="utf-8") as fixture_file:
-            fixture_data = json.load(fixture_file)
-
-        fixture_emails = [
-            item["fields"]["email"].lower()
-            for item in fixture_data
-            if item.get("model") == "core.user" and item.get("fields", {}).get("email")
-        ]
-
         with transaction.atomic():
             if not has_school_data:
-                User.objects.filter(email__in=fixture_emails).delete()
+                self.stdout.write("No school data found; clearing core tables before fixture load.")
+                with connection.constraint_checks_disabled():
+                    Enrollment.objects.all().delete()
+                    Student.objects.all().delete()
+                    Section.objects.all().delete()
+                    Subject.objects.all().delete()
+                    User.objects.all().delete()
 
             call_command("loaddata", str(fixture_path), verbosity=1)
             User.objects.filter(is_active=True).update(email_verified=True)

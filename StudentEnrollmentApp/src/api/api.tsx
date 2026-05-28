@@ -53,7 +53,7 @@ export const getChatbotWebSocketUrl = (token: string) => {
 
 export const api = create({
   baseURL: API_BASE_URL,
-  timeout: 5000,
+  timeout: 30000,
 });
 
 interface RetriableRequestConfig extends InternalAxiosRequestConfig {

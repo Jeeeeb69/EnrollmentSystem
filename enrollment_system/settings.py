@@ -255,6 +255,7 @@ DEFAULT_CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:19006',
     'http://localhost:3000',
     'http://127.0.0.1:3000',
+    'https://enrollment-system-bay.vercel.app',
 ]
 
 if RENDER_EXTERNAL_HOSTNAME:

@@ -411,7 +411,8 @@ class StudentRegistrationSerializer(serializers.Serializer):
         user = User.objects.create_user(
             email=validated_data["email"],
             password=password,
-            is_active=False
+            is_active=False,
+            email_verified=False,
         )
 
         user.generate_activation_code()
@@ -419,6 +420,7 @@ class StudentRegistrationSerializer(serializers.Serializer):
             "activation_code",
             "activation_code_expires_at",
             "is_active",
+            "email_verified",
         ])
 
         return Student.objects.create(
@@ -454,7 +456,8 @@ class ActivationResendSerializer(serializers.Serializer):
 
 class ActiveTokenObtainPairSerializer(TokenObtainPairSerializer):
     default_error_messages = {
-        "no_active_account": "Account is not activated. Please verify your email first."
+        "email_not_verified": "Please verify your email first using the code sent to your Gmail account.",
+        "pending_admin_activation": "Email verified. Please wait until the admin activates your account.",
     }
 
     def validate(self, attrs):
@@ -471,11 +474,17 @@ class ActiveTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         if self.user is None:
             email = User.objects.normalize_email(attrs[self.username_field]).lower()
+            user = User.objects.filter(email__iexact=email).first()
 
-            if User.objects.filter(email__iexact=email, is_active=False).exists():
+            if user and user.check_password(attrs["password"]) and not user.is_active:
+                message_key = (
+                    "pending_admin_activation"
+                    if user.email_verified
+                    else "email_not_verified"
+                )
                 raise AuthenticationFailed(
-                    self.error_messages["no_active_account"],
-                    code="no_active_account"
+                    self.error_messages[message_key],
+                    code=message_key
                 )
 
         return super().validate(attrs)

@@ -223,7 +223,7 @@ class AccountActivationTests(TestCase):
             "semester": "1st Sem",
         }
 
-    def test_registration_requires_email_activation_before_login(self):
+    def test_registration_requires_email_verification_and_admin_activation_before_login(self):
         register_response = self.client.post(
             "/api/auth/register/",
             self.payload,
@@ -236,6 +236,7 @@ class AccountActivationTests(TestCase):
 
         user = User.objects.get(email="activate@example.com")
         student = Student.objects.get(email="activate@example.com")
+        self.assertFalse(user.email_verified)
         self.assertFalse(user.is_active)
         self.assertFalse(student.is_active)
 
@@ -249,7 +250,7 @@ class AccountActivationTests(TestCase):
         )
 
         self.assertEqual(login_response.status_code, 401, login_response.data)
-        self.assertIn("activated", login_response.data["detail"].lower())
+        self.assertIn("verify your email", login_response.data["detail"].lower())
 
         verify_response = self.client.post(
             "/api/auth/verify/",
@@ -264,8 +265,26 @@ class AccountActivationTests(TestCase):
 
         user.refresh_from_db()
         student.refresh_from_db()
-        self.assertTrue(user.is_active)
-        self.assertTrue(student.is_active)
+        self.assertTrue(user.email_verified)
+        self.assertFalse(user.is_active)
+        self.assertFalse(student.is_active)
+
+        login_response = self.client.post(
+            "/api/auth/login/",
+            {
+                "email": self.payload["email"],
+                "password": self.payload["password"],
+            },
+            format="json"
+        )
+
+        self.assertEqual(login_response.status_code, 401, login_response.data)
+        self.assertIn("admin activates", login_response.data["detail"].lower())
+
+        student.is_active = True
+        student.save(update_fields=["is_active"])
+        user.is_active = True
+        user.save(update_fields=["is_active"])
 
         login_response = self.client.post(
             "/api/auth/login/",

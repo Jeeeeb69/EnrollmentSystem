@@ -58,8 +58,8 @@ export default function VerifyAccount() {
       });
 
       Alert.alert(
-        "Account Activated",
-        response.data?.message || "You can now log in."
+        "Email Verified",
+        response.data?.message || "Please wait for admin activation before logging in."
       );
 
       router.replace("/(auth)/login" as any);
@@ -161,7 +161,7 @@ export default function VerifyAccount() {
             {verifying ? (
               <ActivityIndicator color="#FFFFFF" />
             ) : (
-              <Text style={styles.primaryButtonText}>Activate Account</Text>
+              <Text style={styles.primaryButtonText}>Verify Email</Text>
             )}
           </TouchableOpacity>
 

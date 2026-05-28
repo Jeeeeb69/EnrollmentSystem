@@ -47,7 +47,7 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'password', 'is_active', 'is_staff')
+        fields = ('email', 'password', 'email_verified', 'is_active', 'is_staff')
 
 
 # =====================================
@@ -58,8 +58,8 @@ class UserAdmin(BaseUserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
 
-    list_display = ('email', 'is_active', 'is_staff', 'is_superuser', 'date_joined')
-    list_filter = ('is_active', 'is_staff', 'is_superuser', 'date_joined')
+    list_display = ('email', 'email_verified', 'is_active', 'is_staff', 'is_superuser', 'date_joined')
+    list_filter = ('email_verified', 'is_active', 'is_staff', 'is_superuser', 'date_joined')
     actions = ['activate_accounts', 'deactivate_accounts']
 
     fieldsets = (
@@ -67,6 +67,7 @@ class UserAdmin(BaseUserAdmin):
         ('Permissions', {
             'fields': (
                 'is_active',
+                'email_verified',
                 'is_staff',
                 'is_superuser',
                 'groups',
@@ -94,7 +95,7 @@ class UserAdmin(BaseUserAdmin):
 
     @admin.action(description='Activate selected accounts')
     def activate_accounts(self, request, queryset):
-        updated = queryset.update(is_active=True)
+        updated = queryset.update(is_active=True, email_verified=True)
         self.message_user(request, f'{updated} account(s) activated.', messages.SUCCESS)
 
     @admin.action(description='Deactivate selected accounts')
@@ -166,7 +167,12 @@ class StudentAdmin(admin.ModelAdmin):
     @admin.action(description='Activate selected students')
     def activate_students(self, request, queryset):
         updated = queryset.update(is_active=True)
-        User.objects.filter(student_profile__in=queryset).update(is_active=True)
+        User.objects.filter(student_profile__in=queryset).update(
+            is_active=True,
+            email_verified=True,
+            activation_code='',
+            activation_code_expires_at=None,
+        )
         self.message_user(request, f'{updated} student(s) activated.', messages.SUCCESS)
 
     @admin.action(description='Deactivate selected students')

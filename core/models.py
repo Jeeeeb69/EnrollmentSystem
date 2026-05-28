@@ -47,6 +47,7 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
         extra_fields.setdefault("is_active", True)
+        extra_fields.setdefault("email_verified", True)
         return self.create_user(
             email,
             password,
@@ -63,6 +64,10 @@ class User(AbstractUser):
 
     email = models.EmailField(
         unique=True
+    )
+
+    email_verified = models.BooleanField(
+        default=False
     )
 
     activation_code = models.CharField(

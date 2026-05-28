@@ -342,10 +342,14 @@ def register_user(request):
             send_activation_email(student.user)
 
             return Response({
-                "message": "Registration successful. Please check your email for the verification code.",
+                "message": (
+                    "Registration submitted. Please check your Gmail for the verification code. "
+                    "After verification, wait for admin activation before logging in."
+                ),
                 "student_id": student.id,
                 "email": student.email,
                 "is_active": student.user.is_active,
+                "email_verified": student.user.email_verified,
                 "auto_enrolled_count": enrollments_created,
                 "waitlisted_count": waitlisted_count
             })
@@ -386,10 +390,18 @@ def verify_activation_code(request):
             status=status.HTTP_404_NOT_FOUND
         )
 
-    if user.is_active:
+    if user.email_verified and user.is_active:
         return Response({
             "message": "Account is already active.",
             "is_active": True,
+            "email_verified": True,
+        })
+
+    if user.email_verified and not user.is_active:
+        return Response({
+            "message": "Email already verified. Please wait for admin activation.",
+            "is_active": False,
+            "email_verified": True,
         })
 
     if not user.activation_code_is_valid(code):
@@ -398,21 +410,18 @@ def verify_activation_code(request):
             status=status.HTTP_400_BAD_REQUEST
         )
 
-    user.is_active = True
+    user.email_verified = True
     user.clear_activation_code()
     user.save(update_fields=[
-        'is_active',
+        'email_verified',
         'activation_code',
         'activation_code_expires_at',
     ])
 
-    if hasattr(user, 'student_profile'):
-        user.student_profile.is_active = True
-        user.student_profile.save(update_fields=['is_active'])
-
     return Response({
-        "message": "Account verified successfully. You can now log in.",
-        "is_active": True,
+        "message": "Email verified successfully. Please wait for admin activation before logging in.",
+        "is_active": False,
+        "email_verified": True,
     })
 
 
@@ -438,10 +447,18 @@ def resend_activation_code(request):
             status=status.HTTP_404_NOT_FOUND
         )
 
-    if user.is_active:
+    if user.email_verified and user.is_active:
         return Response({
             "message": "Account is already active.",
             "is_active": True,
+            "email_verified": True,
+        })
+
+    if user.email_verified and not user.is_active:
+        return Response({
+            "message": "Email already verified. Please wait for admin activation.",
+            "is_active": False,
+            "email_verified": True,
         })
 
     user.generate_activation_code()
@@ -454,6 +471,7 @@ def resend_activation_code(request):
     return Response({
         "message": "A new verification code has been sent to your email.",
         "is_active": False,
+        "email_verified": False,
     })
 
 
@@ -522,7 +540,14 @@ class StudentViewSet(viewsets.ModelViewSet):
 
         if student.user:
             student.user.is_active = True
-            student.user.save(update_fields=['is_active'])
+            student.user.email_verified = True
+            student.user.clear_activation_code()
+            student.user.save(update_fields=[
+                'is_active',
+                'email_verified',
+                'activation_code',
+                'activation_code_expires_at',
+            ])
 
         return Response(StudentSerializer(student, context={'request': request}).data)
 
@@ -789,6 +814,7 @@ def current_user(request):
         "is_staff": user.is_staff,
         "is_superuser": user.is_superuser,
         "is_active": user.is_active,
+        "email_verified": user.email_verified,
     })
 
 

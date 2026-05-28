@@ -6,6 +6,7 @@ export interface CurrentUser {
   is_staff: boolean;
   is_superuser: boolean;
   is_active: boolean;
+  email_verified: boolean;
 }
 
 export async function getCurrentUser() {

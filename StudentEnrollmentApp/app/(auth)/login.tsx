@@ -104,7 +104,9 @@ export default function Login() {
           : "") ||
         getApiErrorMessage(error?.response?.data, "Invalid credentials");
 
-      if (msg.toLowerCase().includes("activated")) {
+      const lowerMsg = msg.toLowerCase();
+
+      if (lowerMsg.includes("verify your email") || lowerMsg.includes("verification code")) {
         Alert.alert("Login Denied", msg, [
           { text: "Cancel", style: "cancel" },
           {

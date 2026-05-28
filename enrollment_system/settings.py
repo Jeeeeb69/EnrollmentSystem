@@ -32,10 +32,21 @@ DEBUG = os.environ.get(
     'False'
 ).lower() == 'true'
 
-ALLOWED_HOSTS = os.environ.get(
-    'DJANGO_ALLOWED_HOSTS',
-    '*'
-).split(',')
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.environ.get(
+        'DJANGO_ALLOWED_HOSTS',
+        '*'
+    ).split(',')
+    if host.strip()
+]
+
+if RENDER_EXTERNAL_HOSTNAME and RENDER_EXTERNAL_HOSTNAME not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # =====================================================
 # APPLICATIONS
@@ -245,6 +256,9 @@ DEFAULT_CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
 ]
+
+if RENDER_EXTERNAL_HOSTNAME:
+    DEFAULT_CORS_ALLOWED_ORIGINS.append(f'https://{RENDER_EXTERNAL_HOSTNAME}')
 
 CORS_ALLOW_ALL_ORIGINS = os.environ.get(
     'CORS_ALLOW_ALL_ORIGINS',

@@ -213,6 +213,9 @@ def build_chatbot_context(user):
 
 
 def build_chatbot_response(user, message):
+    def local_reply():
+        return build_local_chatbot_response(user, message)
+
     payload = {
         "model": settings.OLLAMA_CHAT_MODEL,
         "stream": False,
@@ -251,19 +254,91 @@ def build_chatbot_response(user, message):
         data = response.json()
     except requests.RequestException:
         logger.exception("Ollama chatbot request failed")
-        return (
-            "Ollama chatbot is unavailable right now. Make sure Ollama is running "
-            "and the qwen2.5:0.5b model is installed."
-        )
+        return local_reply()
     except ValueError:
         logger.exception("Ollama chatbot returned invalid JSON")
-        return "Ollama chatbot returned an invalid response."
+        return local_reply()
 
     reply = data.get('message', {}).get('content', '').strip()
     if not reply:
-        return "Ollama chatbot did not return a reply."
+        return local_reply()
 
     return reply
+
+
+def build_local_chatbot_response(user, message):
+    message_lower = message.lower()
+
+    try:
+        student = Student.objects.get(user=user)
+    except Student.DoesNotExist:
+        student = None
+
+    if "status" in message_lower or "enrollment" in message_lower or "enrolled" in message_lower:
+        enrollments = Enrollment.objects.select_related(
+            "student",
+            "subject",
+            "section",
+        ).order_by("-created_at")
+
+        if student and not user.is_staff:
+            enrollments = enrollments.filter(student=student)
+
+        lines = [
+            (
+                f"{enrollment.subject.subject_code}: {enrollment.status}"
+                f"{' in section ' + enrollment.section.section_name if enrollment.section else ''}"
+            )
+            for enrollment in enrollments[:8]
+        ]
+
+        return "\n".join(lines) if lines else "No enrollment records found yet."
+
+    if "section" in message_lower or "slot" in message_lower:
+        sections = Section.objects.select_related("subject").order_by(
+            "subject__subject_code",
+            "section_name",
+        )
+
+        if student and not user.is_staff:
+            sections = sections.filter(
+                Q(subject__course=student.course) | Q(subject__course="GENERAL"),
+                subject__year_level=student.year_level,
+                subject__semester=student.semester,
+            )
+
+        lines = [
+            (
+                f"{section.subject.subject_code} - {section.section_name}: "
+                f"{section.available_slots} slot(s), room {section.room or 'N/A'}, "
+                f"{section.schedule or 'schedule TBA'}"
+            )
+            for section in sections[:10]
+        ]
+
+        return "\n".join(lines) if lines else "No sections found for your current course, year, and semester."
+
+    subjects = Subject.objects.order_by("subject_code")
+
+    if student and not user.is_staff:
+        subjects = subjects.filter(
+            Q(course=student.course) | Q(course="GENERAL"),
+            year_level=student.year_level,
+            semester=student.semester,
+        )
+
+    lines = [
+        (
+            f"{subject.subject_code}: {subject.subject_name} "
+            f"({subject.units} unit(s), {subject.course}, {subject.year_level}, {subject.semester})"
+        )
+        for subject in subjects[:10]
+    ]
+
+    if lines:
+        return "Ollama is unavailable, so I used the enrollment database directly:\n" + "\n".join(lines)
+
+    return "Ollama is unavailable, and I could not find matching enrollment data yet."
 
 
 def auto_enroll_student(student):
